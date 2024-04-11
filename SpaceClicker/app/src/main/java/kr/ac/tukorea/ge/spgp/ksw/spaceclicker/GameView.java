@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.graphics.Matrix;
 import android.view.View;
 
 public class GameView extends View {
@@ -33,7 +34,7 @@ public class GameView extends View {
 
     private static final float SCREEN_WIDTH = 9.0f;
     private static final float SCREEN_HEIGHT = 16.0f;
-    private final PointF transformOffset = new PointF();
+    private Matrix transform = new Matrix();
     private float transformScale = 1;
     private final RectF borderRect = new RectF(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     private final Paint borderPaint;
@@ -46,11 +47,13 @@ public class GameView extends View {
         float game_ratio = SCREEN_WIDTH / SCREEN_HEIGHT;
 
         if (view_ratio > game_ratio) {
-            transformOffset.set((w - h * game_ratio) / 2, 0);
-            transformScale = h / SCREEN_HEIGHT;
+            float scale = (float)h / SCREEN_HEIGHT;
+            transform.setTranslate((w - h * game_ratio) / 2, 0);
+            transform.preScale(scale, scale);
         } else {
-            transformOffset.set(0, (h - w / game_ratio) / 2);
-            transformScale = w / SCREEN_WIDTH;
+            float scale = (float)w / SCREEN_WIDTH;
+            transform.setTranslate(0, (h - w / game_ratio) / 2);
+            transform.preScale(scale, scale);
         }
     }
 
@@ -58,7 +61,7 @@ public class GameView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.save();
-        canvas.translate(transformOffset.x, transformOffset.y);
+        canvas.concat(transform);
         canvas.scale(transformScale, transformScale);
         canvas.drawRect(borderRect, borderPaint);
         canvas.restore();
