@@ -2,9 +2,12 @@ package kr.ac.tukorea.ge.spgp.ksw.spaceclicker;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.Log;
 import android.graphics.Matrix;
@@ -18,6 +21,7 @@ public class GameView extends View {
 
     private Scrap scrap = new Scrap();
     private RectF touchSpace = new RectF(1, 1, 8, 15);
+    private Bitmap backgroudBitmap;
 
     public GameView(Context context) {
         super(context);
@@ -31,6 +35,8 @@ public class GameView extends View {
         setFullScreen(); // default behavior?
 
         scrap.Init();
+
+        backgroudBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.space_backgroud_x4);
     }
 
     public void setFullScreen() {
@@ -69,6 +75,17 @@ public class GameView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        DrawBackground(canvas);
+        DrawDebugBox(canvas);
+    }
+
+    private void DrawBackground(Canvas canvas) {
+        Rect srcRect = new Rect(700, 0, getWidth() / 2 + 700, getHeight() / 2);
+        Rect dstRect = new Rect(0, 0, getWidth(), getHeight());
+        canvas.drawBitmap(backgroudBitmap, srcRect, dstRect, null);
+    }
+
+    private void DrawDebugBox(Canvas canvas) {
         canvas.save();
         canvas.concat(transform);
         canvas.drawRect(borderRect, borderPaint);
