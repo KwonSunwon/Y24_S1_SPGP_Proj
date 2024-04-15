@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.Interface.GameObject;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.Object.Scrap;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.View.Metrics;
 
 public class GameView extends View implements Choreographer.FrameCallback{
     private final Activity activity;
@@ -67,19 +68,7 @@ public class GameView extends View implements Choreographer.FrameCallback{
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
 
-        float view_ratio = (float)w / (float)h;
-        float game_ratio = SCREEN_WIDTH / SCREEN_HEIGHT;
-
-        if (view_ratio > game_ratio) {
-            float scale = (float)h / SCREEN_HEIGHT;
-            transform.setTranslate((w - h * game_ratio) / 2, 0);
-            transform.preScale(scale, scale);
-        } else {
-            float scale = (float)w / SCREEN_WIDTH;
-            transform.setTranslate(0, (h - w / game_ratio) / 2);
-            transform.preScale(scale, scale);
-        }
-        transform.invert(inverse);
+        Metrics.onSize(w, h);
     }
 
     private long previousNanos = 0;
