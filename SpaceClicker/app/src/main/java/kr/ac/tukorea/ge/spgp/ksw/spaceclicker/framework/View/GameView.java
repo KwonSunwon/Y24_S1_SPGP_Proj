@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.spgp.ksw.spaceclicker;
+package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.View;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.Log;
 import android.graphics.Matrix;
+import android.view.Choreographer;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -18,7 +19,11 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
-public class GameView extends View {
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.Interface.GameObject;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.Object.Scrap;
+
+public class GameView extends View implements Choreographer.FrameCallback{
     private final Activity activity;
 
     private Scrap scrap = new Scrap();
@@ -75,6 +80,29 @@ public class GameView extends View {
             transform.preScale(scale, scale);
         }
         transform.invert(inverse);
+    }
+
+    private long previousNanos = 0;
+    private float elapsedSeconds = 0;
+    private void scheduleUpdate() {
+        Choreographer.getInstance().postFrameCallback(this);
+    }
+
+    @Override
+    public void doFrame(long nanos) {
+        long elapsedNanos = nanos - previousNanos;
+        elapsedSeconds = elapsedNanos / 1_000_000_000f;
+        if (previousNanos != 0) {
+            update();
+        }
+        invalidate();
+        if (isShown()) {
+            scheduleUpdate();
+        }
+        previousNanos = nanos;
+    }
+    private void update() {
+        // Scene Update
     }
 
     @Override
