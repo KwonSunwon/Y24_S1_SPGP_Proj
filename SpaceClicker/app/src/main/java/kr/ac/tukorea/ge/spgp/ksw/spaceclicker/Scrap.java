@@ -5,12 +5,21 @@ public class Scrap implements GameObject {
     private long scrapPerTouch;
     private long scrapPerSecond;
 
-    @Override
     public void Init() {
         // Load scrap from save file
         scrap = 0;
         scrapPerTouch = 1;
         scrapPerSecond = 0;
+    }
+
+    @Override
+    public void Update() {
+        scrap += scrapPerSecond;
+    }
+
+    @Override
+    public void Render() {
+
     }
 
     public void AddScrapFromClick() {

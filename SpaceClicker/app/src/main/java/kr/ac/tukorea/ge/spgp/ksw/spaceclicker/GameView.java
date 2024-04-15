@@ -16,12 +16,16 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
+
 public class GameView extends View {
     private final Activity activity;
 
     private Scrap scrap = new Scrap();
     private RectF touchSpace = new RectF(1, 1, 8, 15);
     private Bitmap backgroudBitmap;
+
+    private ArrayList<GameObject> gameObjects = new ArrayList<>();
 
     public GameView(Context context) {
         super(context);
@@ -35,6 +39,7 @@ public class GameView extends View {
         setFullScreen(); // default behavior?
 
         scrap.Init();
+        gameObjects.add(scrap);
 
         backgroudBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.space_backgroud_x4);
     }
@@ -76,6 +81,16 @@ public class GameView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         DrawBackground(canvas);
+
+        canvas.save();
+        canvas.concat(transform);
+        Paint paint = new Paint();
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(1);
+        paint.setTextAlign(Paint.Align.RIGHT);
+        canvas.drawText(scrap.GetScrap(), 2, 0, paint);
+        canvas.restore();
+
         DrawDebugBox(canvas);
     }
 
@@ -100,6 +115,8 @@ public class GameView extends View {
             scrap.AddScrapFromClick();
         }
         Log.d("GameView Touch", "Touch at " + touchPoint[0] + ", " + touchPoint[1] + " scrap: " + scrap.GetScrap());
+
+        invalidate();
         return super.onTouchEvent(event);
     }
 
