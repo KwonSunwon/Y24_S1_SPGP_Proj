@@ -2,15 +2,12 @@ package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.app;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
+import kr.ac.tukorea.ge.spgp.ksw.framework.activity.GameActivity;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.scene.MainScene;
 
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.View.GameView;
-
-public class MainActivity extends AppCompatActivity {
-
-    @Override
+public class MainActivity extends GameActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(new GameView(this));
+        new MainScene().push();
     }
 }

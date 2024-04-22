@@ -1,8 +1,10 @@
-package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.Game.framework.Object;
+package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.Game.framework.Interface.GameObject;
+import android.graphics.Canvas;
 
-public class Scrap implements GameObject {
+import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
+
+public class Scrap implements IGameObject {
     private long scrap;
     private long scrapPerTouch;
     private long scrapPerSecond;
@@ -15,12 +17,12 @@ public class Scrap implements GameObject {
     }
 
     @Override
-    public void Update() {
-        scrap += scrapPerSecond;
+    public void update(float elapsedSeconds){
+
     }
 
     @Override
-    public void Render() {
+    public void draw(Canvas canvas){
 
     }
 
