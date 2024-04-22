@@ -5,8 +5,8 @@ import android.graphics.Canvas;
 import android.graphics.RectF;
 import android.util.Log;
 
-import kr.ac.tukorea.ge.spgp2024.framework.interfaces.IGameObject;
-import kr.ac.tukorea.ge.spgp2024.framework.res.BitmapPool;
+import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
+import kr.ac.tukorea.ge.spgp.ksw.framework.res.BitmapPool;
 
 public class Sprite implements IGameObject {
     private static final String TAG = Sprite.class.getSimpleName();

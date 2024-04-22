@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.Game.framework.View;
+package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.View;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
+import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.Game.framework.Object.Scrap;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.Game.framework.Interface.GameObject;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;

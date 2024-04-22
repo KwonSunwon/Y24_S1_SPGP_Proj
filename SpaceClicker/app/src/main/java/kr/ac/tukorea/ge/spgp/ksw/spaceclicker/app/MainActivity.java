@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.Game.framework.Activity;
+package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.app;
 
 import android.os.Bundle;
 

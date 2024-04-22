@@ -2,7 +2,7 @@ package kr.ac.tukorea.ge.spgp.ksw.framework.objects;
 
 import android.graphics.Canvas;
 
-import kr.ac.tukorea.ge.spgp2024.framework.view.Metrics;
+import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 
 public class VertScrollBackground extends Sprite {
     private final float speed;

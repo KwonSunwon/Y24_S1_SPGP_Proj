@@ -3,7 +3,7 @@ package kr.ac.tukorea.ge.spgp.ksw.framework.objects;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
-import kr.ac.tukorea.ge.spgp2024.framework.res.BitmapPool;
+import kr.ac.tukorea.ge.spgp.ksw.framework.res.BitmapPool;
 
 public class AnimSprite extends Sprite {
     protected Rect srcRect = new Rect();

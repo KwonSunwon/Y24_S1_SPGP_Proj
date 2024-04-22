@@ -6,9 +6,9 @@ import android.graphics.RectF;
 import android.util.Log;
 import android.view.MotionEvent;
 
-import kr.ac.tukorea.ge.spgp2024.framework.interfaces.IGameObject;
-import kr.ac.tukorea.ge.spgp2024.framework.res.BitmapPool;
-import kr.ac.tukorea.ge.spgp2024.framework.view.Metrics;
+import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
+import kr.ac.tukorea.ge.spgp.ksw.framework.res.BitmapPool;
+import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 
 public class JoyStick implements IGameObject {
     private static final String TAG = JoyStick.class.getSimpleName();
