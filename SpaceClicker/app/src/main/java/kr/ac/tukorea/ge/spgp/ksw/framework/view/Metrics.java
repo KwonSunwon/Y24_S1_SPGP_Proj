@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.Game.framework.View;
+package kr.ac.tukorea.ge.spgp.ksw.framework.view;
 
 import android.graphics.Canvas;
 import android.graphics.Matrix;

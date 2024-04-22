@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.View;
+package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.Game.framework.View;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,10 +19,9 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.Interface.GameObject;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.Game.framework.Object.Scrap;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.Game.framework.Interface.GameObject;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.Object.Scrap;
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.View.Metrics;
 
 public class GameView extends View implements Choreographer.FrameCallback{
     private final Activity activity;
@@ -97,6 +96,7 @@ public class GameView extends View implements Choreographer.FrameCallback{
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
         DrawBackground(canvas);
 
         canvas.save();

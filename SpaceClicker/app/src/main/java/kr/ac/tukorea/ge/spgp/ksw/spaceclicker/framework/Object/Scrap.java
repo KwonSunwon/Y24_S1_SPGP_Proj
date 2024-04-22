@@ -1,6 +1,6 @@
-package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.Object;
+package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.Game.framework.Object;
 
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.Interface.GameObject;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.Game.framework.Interface.GameObject;
 
 public class Scrap implements GameObject {
     private long scrap;

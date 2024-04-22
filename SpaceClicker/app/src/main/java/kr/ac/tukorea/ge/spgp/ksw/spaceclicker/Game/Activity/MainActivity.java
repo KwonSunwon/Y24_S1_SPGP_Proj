@@ -1,10 +1,10 @@
-package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.Activity;
+package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.Game.framework.Activity;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.framework.View.GameView;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.Game.framework.View.GameView;
 
 public class MainActivity extends AppCompatActivity {
 
