@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.webkit.WebHistoryItem;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
@@ -42,11 +43,15 @@ public class Scrap implements IGameObject {
         canvas.drawText(GetScrap(), position.x, position.y, paint);
     }
 
-    public void AddScrapFromClick() {
-        scrap += scrapPerTouch;
-    }
-
     public String GetScrap() {
         return Long.toUnsignedString(scrap / 100);
+    }
+
+    public boolean onTouch(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            scrap += scrapPerTouch * 100;
+            return true;
+        }
+        return false;
     }
 }

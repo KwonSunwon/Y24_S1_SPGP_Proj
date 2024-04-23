@@ -1,6 +1,7 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.scene;
 
 import android.util.Log;
+import android.view.MotionEvent;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
@@ -14,7 +15,7 @@ public class MainScene extends Scene{
         END
     }
 
-    Scrap scrap;
+    private Scrap scrap;
 
     public MainScene() {
         if(BuildConfig.DEBUG)
@@ -28,5 +29,9 @@ public class MainScene extends Scene{
 
     public void update(float elapsedSeconds) {
         super.update(elapsedSeconds);
+    }
+
+    public boolean onTouch(MotionEvent event) {
+        return scrap.onTouch(event);
     }
 }
