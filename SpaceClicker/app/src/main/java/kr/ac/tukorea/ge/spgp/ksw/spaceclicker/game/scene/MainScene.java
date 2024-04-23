@@ -44,7 +44,7 @@ public class MainScene extends Scene{
     public boolean onTouch(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             if(spaceShip.onTouch(event))
-                return scrap.onTouch(event);
+                return scrap.onTouch();
         }
         return false;
     }
