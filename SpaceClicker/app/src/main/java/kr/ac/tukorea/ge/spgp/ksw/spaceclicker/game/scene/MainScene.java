@@ -3,10 +3,27 @@ package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.scene;
 import android.util.Log;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Scrap;
 
 public class MainScene extends Scene{
+    enum Layer {
+        BACKGROUND,
+        OBJECT,
+        UI,
+        END
+    }
+
+    Scrap scrap;
+
     public MainScene() {
-        Log.d("MainScene", "MainScene constructor");
+        if(BuildConfig.DEBUG)
+            Log.d("MainScene", "MainScene constructor");
+
+        initLayers(Layer.END);
+
+        scrap = new Scrap();
+        add(Layer.UI, scrap);
     }
 
     public void update(float elapsedSeconds) {
