@@ -22,8 +22,9 @@ public class VertScrollBackground extends Sprite {
     public void draw(Canvas canvas) {
         //super.draw(canvas);
         float curr = y % height;
-        if (curr > 0) curr -= height;
-        while (curr < Metrics.height) {
+        if (curr > 0)
+            curr -= height;
+        while (curr < height) {
             dstRect.set(0, curr, Metrics.width, curr + height);
             canvas.drawBitmap(bitmap, null, dstRect, null);
             curr += height;
