@@ -19,6 +19,8 @@ public class Scrap implements IGameObject {
     private long scrapPerTouch;
     private long scrapPerSecond;
 
+    private final int SCRAP_MODIFIER = 100;
+
     public Scrap() {
         // Load scrap from save file
         scrap = 0; // if value is 100 that means player has 1 scrap, so 123 equals 1.23 scrap
@@ -35,7 +37,7 @@ public class Scrap implements IGameObject {
     public void update(float elapsedSeconds){
         float scrapPerSecond = this.scrapPerSecond * elapsedSeconds;
         Log.d("Scrap", "Scrap per second: " + scrapPerSecond);
-        scrap += scrapPerSecond * 100;
+        scrap += (long) (scrapPerSecond * SCRAP_MODIFIER);
     }
 
     @Override
@@ -44,11 +46,11 @@ public class Scrap implements IGameObject {
     }
 
     public String GetScrap() {
-        return Long.toUnsignedString(scrap / 100);
+        return Long.toUnsignedString(scrap / SCRAP_MODIFIER);
     }
 
     public boolean onTouch(MotionEvent event) {
-        scrap += scrapPerTouch * 100;
+        scrap += scrapPerTouch * SCRAP_MODIFIER;
         return true;
     }
 }
