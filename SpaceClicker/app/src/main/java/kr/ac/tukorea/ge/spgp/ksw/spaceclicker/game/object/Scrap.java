@@ -48,10 +48,7 @@ public class Scrap implements IGameObject {
     }
 
     public boolean onTouch(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            scrap += scrapPerTouch * 100;
-            return true;
-        }
-        return false;
+        scrap += scrapPerTouch * 100;
+        return true;
     }
 }

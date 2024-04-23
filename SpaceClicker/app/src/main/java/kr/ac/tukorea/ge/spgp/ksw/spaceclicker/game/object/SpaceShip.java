@@ -1,8 +1,11 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 
 import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.view.MotionEvent;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
+import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 
 public class SpaceShip extends Sprite {
@@ -19,5 +22,10 @@ public class SpaceShip extends Sprite {
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
+    }
+
+    public boolean onTouch(MotionEvent event) {
+        float[] pts = Metrics.fromScreen(event.getX(), event.getY());
+        return dstRect.contains(pts[0], pts[1]);
     }
 }

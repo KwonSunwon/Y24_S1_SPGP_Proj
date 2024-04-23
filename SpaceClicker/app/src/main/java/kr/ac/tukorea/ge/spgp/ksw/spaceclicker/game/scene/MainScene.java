@@ -11,14 +11,15 @@ import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Scrap;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.SpaceShip;
 
 public class MainScene extends Scene{
+    private SpaceShip spaceShip;
+    private Scrap scrap;
+
     enum Layer {
         BACKGROUND,
         OBJECT,
         UI,
         END
     }
-
-    private Scrap scrap;
 
     public MainScene() {
         if(BuildConfig.DEBUG)
@@ -29,7 +30,7 @@ public class MainScene extends Scene{
         VertScrollBackground bg = new VertScrollBackground(R.mipmap.bg_space, 1.f);
         add(Layer.BACKGROUND, bg);
 
-        SpaceShip spaceShip = new SpaceShip();
+        spaceShip = new SpaceShip();
         add(Layer.OBJECT, spaceShip);
 
         scrap = new Scrap();
@@ -41,6 +42,10 @@ public class MainScene extends Scene{
     }
 
     public boolean onTouch(MotionEvent event) {
-        return scrap.onTouch(event);
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            if(spaceShip.onTouch(event))
+                return scrap.onTouch(event);
+        }
+        return false;
     }
 }
