@@ -3,8 +3,10 @@ package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.scene;
 import android.util.Log;
 import android.view.MotionEvent;
 
+import kr.ac.tukorea.ge.spgp.ksw.framework.objects.VertScrollBackground;
 import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Scrap;
 
 public class MainScene extends Scene{
@@ -22,6 +24,9 @@ public class MainScene extends Scene{
             Log.d("MainScene", "MainScene constructor");
 
         initLayers(Layer.END);
+
+        VertScrollBackground bg = new VertScrollBackground(R.mipmap.bg_space, 1.f);
+        add(Layer.BACKGROUND, bg);
 
         scrap = new Scrap();
         add(Layer.UI, scrap);
