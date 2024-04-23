@@ -10,11 +10,10 @@ import android.view.MotionEvent;
 import android.webkit.WebHistoryItem;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
+import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 
-public class Scrap implements IGameObject {
-    private Point position;
-    private Paint paint;
-
+public class Scrap extends ImageNumber{
     private long scrap;
     private long scrapPerTouch;
     private long scrapPerSecond;
@@ -22,15 +21,13 @@ public class Scrap implements IGameObject {
     private final int SCRAP_MODIFIER = 100;
 
     public Scrap() {
-        // Load scrap from save file
-        scrap = 0; // if value is 100 that means player has 1 scrap, so 123 equals 1.23 scrap
-        scrapPerTouch = 1;
-        scrapPerSecond = 1;
+        super(R.mipmap.font1, 8.5f, 0.5f, 0.3f);
 
-        position = new Point(2, 0);
-        paint = new Paint();
-        paint.setColor(Color.BLACK);
-        paint.setTextSize(1);
+        // Load scrap from save file
+
+        scrap = (long)999999999; // if value is 100 that means player has 1 scrap, so 123 equals 1.23 scrap
+        scrapPerTouch = 1;
+        scrapPerSecond = 100000;
     }
 
     @Override
@@ -42,14 +39,15 @@ public class Scrap implements IGameObject {
 
     @Override
     public void draw(Canvas canvas){
-        canvas.drawText(GetScrap(), position.x, position.y, paint);
+        super.setNumber(scrap / SCRAP_MODIFIER);
+        super.draw(canvas);
     }
 
     public String GetScrap() {
         return Long.toUnsignedString(scrap / SCRAP_MODIFIER);
     }
 
-    public boolean onTouch(MotionEvent event) {
+    public boolean onTouch() {
         scrap += scrapPerTouch * SCRAP_MODIFIER;
         return true;
     }
