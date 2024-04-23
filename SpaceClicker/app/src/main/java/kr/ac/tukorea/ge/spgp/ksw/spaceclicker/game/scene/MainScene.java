@@ -8,6 +8,7 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Scrap;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.SpaceShip;
 
 public class MainScene extends Scene{
     enum Layer {
@@ -27,6 +28,9 @@ public class MainScene extends Scene{
 
         VertScrollBackground bg = new VertScrollBackground(R.mipmap.bg_space, 1.f);
         add(Layer.BACKGROUND, bg);
+
+        SpaceShip spaceShip = new SpaceShip();
+        add(Layer.OBJECT, spaceShip);
 
         scrap = new Scrap();
         add(Layer.UI, scrap);
