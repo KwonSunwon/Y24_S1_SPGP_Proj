@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
+import android.text.Html;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.webkit.WebHistoryItem;
@@ -13,15 +14,19 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 
-public class Scrap extends ImageNumber{
+public class Scrap implements IGameObject{
     private long scrap;
-    private long scrapPerTouch;
     private long scrapPerSecond;
+    private long scrapPerTouch;
+
+    private ImageNumber scrapDisplay;
+    private ImageNumber scrapPerSecondDisplay;
 
     private final int SCRAP_MODIFIER = 100;
 
     public Scrap() {
-        super(R.mipmap.font1, 8.5f, 0.5f, 0.3f);
+        scrapDisplay = new ImageNumber(R.mipmap.font1, 8.5f, 0.5f, 0.3f);
+        scrapPerSecondDisplay = new ImageNumber(R.mipmap.font1, 8.5f, 1.0f, 0.3f);
 
         // Load scrap from save file
 
@@ -32,19 +37,16 @@ public class Scrap extends ImageNumber{
 
     @Override
     public void update(float elapsedSeconds){
-        float scrapPerSecond = this.scrapPerSecond * elapsedSeconds;
-        Log.d("Scrap", "Scrap per second: " + scrapPerSecond);
-        scrap += (long) (scrapPerSecond * SCRAP_MODIFIER);
+        float scrapAdder = scrapPerSecond * elapsedSeconds;
+        scrap += (long) (scrapAdder * SCRAP_MODIFIER);
     }
 
     @Override
     public void draw(Canvas canvas){
-        super.setNumber(scrap / SCRAP_MODIFIER);
-        super.draw(canvas);
-    }
-
-    public String GetScrap() {
-        return Long.toUnsignedString(scrap / SCRAP_MODIFIER);
+        scrapDisplay.setNumber(scrap / SCRAP_MODIFIER);
+        scrapDisplay.draw(canvas);
+        scrapPerSecondDisplay.setNumber(scrapPerSecond / SCRAP_MODIFIER);
+        scrapPerSecondDisplay.draw(canvas);
     }
 
     public boolean onTouch() {

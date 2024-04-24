@@ -32,6 +32,10 @@ public class ImageNumber implements IGameObject {
         this.dstOffset = 0.2f;
     }
 
+    public long getNumber() {
+        return this.number;
+    }
+
     public void setNumber(long number) {
         this.number = this.displayNumber = number;
     }
