@@ -22,11 +22,20 @@ public class Scrap implements IGameObject{
     private ImageNumber scrapDisplay;
     private ImageNumber scrapPerSecondDisplay;
 
+    private Sprite scrapIcon;
+    private Sprite plusIcon;
+
     private final int SCRAP_MODIFIER = 100;
 
     public Scrap() {
-        scrapDisplay = new ImageNumber(R.mipmap.font1, 8.5f, 0.5f, 0.3f);
-        scrapPerSecondDisplay = new ImageNumber(R.mipmap.font1, 8.5f, 1.0f, 0.3f);
+        scrapDisplay = new ImageNumber(R.mipmap.font1, 8.f, 0.5f, 0.3f);
+        scrapPerSecondDisplay = new ImageNumber(R.mipmap.font1, 8.f, 1.0f, 0.3f);
+
+        scrapIcon = new Sprite(R.mipmap.scrap_icon);
+        scrapIcon.setPosition(8.5f, 0.7f, 0.6f, 0.5f);
+
+        plusIcon = new Sprite(R.mipmap.plus_icon);
+        plusIcon.setPosition(8.4f, 1.2f, 0.4f, 0.4f);
 
         // Load scrap from save file
 
@@ -47,6 +56,9 @@ public class Scrap implements IGameObject{
         scrapDisplay.draw(canvas);
         scrapPerSecondDisplay.setNumber(scrapPerSecond / SCRAP_MODIFIER);
         scrapPerSecondDisplay.draw(canvas);
+
+        scrapIcon.draw(canvas);
+        plusIcon.draw(canvas);
     }
 
     public boolean onTouch() {

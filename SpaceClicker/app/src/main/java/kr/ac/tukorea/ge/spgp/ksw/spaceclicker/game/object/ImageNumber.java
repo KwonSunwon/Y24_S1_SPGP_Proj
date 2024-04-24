@@ -55,11 +55,11 @@ public class ImageNumber implements IGameObject {
 
     @Override
     public void draw(Canvas canvas) {
-        if(BuildConfig.DEBUG){
-            Paint paint = new Paint();
-            paint.setColor(0x80FF0000);
-            canvas.drawRect(right, top, right + dstCharWidth, top + dstCharHeight, paint);
-        }
+//        if(BuildConfig.DEBUG){
+//            Paint paint = new Paint();
+//            paint.setColor(0x80FF0000);
+//            canvas.drawRect(right, top, right + dstCharWidth, top + dstCharHeight, paint);
+//        }
 
         long value = this.displayNumber;
         float x = right;
