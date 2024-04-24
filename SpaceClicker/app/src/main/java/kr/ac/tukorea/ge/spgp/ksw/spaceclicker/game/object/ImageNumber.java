@@ -12,7 +12,10 @@ import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
 
 public class ImageNumber implements IGameObject {
     private final Bitmap bitmap;
-    private final float right, top, dstCharWidth, dstCharHeight;
+    private float right;
+    private float top;
+    private final float dstCharWidth;
+    private final float dstCharHeight;
     private final float dstOffset;
     private final Rect srcRect = new Rect();
     private final RectF dstRect = new RectF();
@@ -49,14 +52,7 @@ public class ImageNumber implements IGameObject {
         }
     }
 
-    @Override
-    public void draw(Canvas canvas) {
-        if(BuildConfig.DEBUG){
-            Paint paint = new Paint();
-            paint.setColor(0x80FF0000);
-            canvas.drawRect(right, top, right + dstCharWidth, top + dstCharHeight, paint);
-        }
-
+    public void drawNumber(Canvas canvas) {
         long value = this.displayNumber;
         float x = right;
         while (value > 0) {
@@ -67,5 +63,23 @@ public class ImageNumber implements IGameObject {
             canvas.drawBitmap(bitmap, srcRect, dstRect, null);
             value /= 10;
         }
+    }
+
+    @Override
+    public void draw(Canvas canvas) {
+        if(BuildConfig.DEBUG){
+            Paint paint = new Paint();
+            paint.setColor(0x80FF0000);
+            canvas.drawRect(right, top, right + dstCharWidth, top + dstCharHeight, paint);
+        }
+
+        drawNumber(canvas);
+    }
+
+    public void drawWithPos(Canvas canvas, float right, float top) {
+        this.right = right;
+        this.top = top;
+
+        drawNumber(canvas);
     }
 }

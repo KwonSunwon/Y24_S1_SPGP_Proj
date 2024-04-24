@@ -40,7 +40,9 @@ public class Scrap extends ImageNumber{
     @Override
     public void draw(Canvas canvas){
         super.setNumber(scrap / SCRAP_MODIFIER);
-        super.draw(canvas);
+        super.drawWithPos(canvas, 8.5f, 0.5f);
+        super.setNumber(scrapPerSecond / SCRAP_MODIFIER);
+        super.drawWithPos(canvas, 8.5f, 1.0f);
     }
 
     public String GetScrap() {
