@@ -48,13 +48,13 @@ public class Scrap implements IGameObject{
     public void update(float elapsedSeconds){
         float scrapAdder = scrapPerSecond * elapsedSeconds;
         scrap += (long) (scrapAdder * SCRAP_MODIFIER);
+        scrapDisplay.setNumber(scrap / SCRAP_MODIFIER);
+        scrapPerSecondDisplay.setNumber(scrapPerSecond / SCRAP_MODIFIER);
     }
 
     @Override
     public void draw(Canvas canvas){
-        scrapDisplay.setNumber(scrap / SCRAP_MODIFIER);
         scrapDisplay.draw(canvas);
-        scrapPerSecondDisplay.setNumber(scrapPerSecond / SCRAP_MODIFIER);
         scrapPerSecondDisplay.draw(canvas);
 
         scrapIcon.draw(canvas);
