@@ -35,7 +35,7 @@ public class Scrap implements IGameObject{
         scrapIcon.setPosition(8.5f, 0.7f, 0.6f, 0.5f);
 
         plusIcon = new Sprite(R.mipmap.plus_icon);
-        plusIcon.setPosition(8.4f, 1.2f, 0.4f, 0.4f);
+        plusIcon.setPosition(8.5f, 1.2f, 0.4f, 0.4f);
 
         // Load scrap from save file
 

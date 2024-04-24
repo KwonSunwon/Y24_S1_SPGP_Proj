@@ -15,6 +15,9 @@ public class SpaceShip extends Sprite {
     private ImageNumber speedDisplay;
     private ImageNumber distanceDisplay;
 
+    private Sprite speedIcon;
+    private Sprite distanceIcon;
+
     public SpaceShip() {
         super(R.mipmap.spaceship);
         setPosition(4.5f, 8.f, 3.f, 3.f );
@@ -24,7 +27,13 @@ public class SpaceShip extends Sprite {
         distance = 0;
 
         speedDisplay = new ImageNumber(R.mipmap.font1, 8f, 1.5f, 0.3f);
-        distanceDisplay = new ImageNumber(R.mipmap.font1, 8f, 2.f, 0.3f);
+        distanceDisplay = new ImageNumber(R.mipmap.font1, 7.8f, 2.f, 0.5f);
+
+        speedIcon = new Sprite(R.mipmap.speed_icon);
+        speedIcon.setPosition(8.5f, 1.7f, 0.5f, 0.5f);
+
+        distanceIcon = new Sprite(R.mipmap.km);
+        distanceIcon.setPosition(8.5f, 2.35f, 1.f, 0.4f);
     }
 
     @Override
@@ -38,8 +47,10 @@ public class SpaceShip extends Sprite {
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        speedDisplay.draw(canvas);
         distanceDisplay.draw(canvas);
+        speedDisplay.draw(canvas);
+        distanceIcon.draw(canvas);
+        speedIcon.draw(canvas);
     }
 
     public boolean onTouch(MotionEvent event) {
