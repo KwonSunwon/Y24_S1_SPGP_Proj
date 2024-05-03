@@ -32,7 +32,7 @@ public class Scrap implements IGameObject{
         // Load scrap from save file
 
         scrap = (long)999999999; // if value is 100 that means player has 1 scrap, so 123 equals 1.23 scrap
-        scrapPerTouch = 100;
+        scrapPerTouch = 1;
         scrapPerSecond = 0;
     }
 

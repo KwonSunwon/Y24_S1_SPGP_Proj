@@ -55,11 +55,15 @@ public class MainScene extends Scene{
         add(Layer.BUTTON, upgradeButton);
     }
 
-    public void update(float elapsedSeconds) {
-        super.update(elapsedSeconds);
-    }
-
+    @Override
     public boolean onTouch(MotionEvent event) {
-        return super.onTouch(event);
+        if(event.getAction() == MotionEvent.ACTION_DOWN){
+            if(spaceShip.onTouch(event)) {
+                scrap.addScrapFromTouch();
+                return true;
+            }
+            return super.onTouch(event);
+        }
+        return false;
     }
 }

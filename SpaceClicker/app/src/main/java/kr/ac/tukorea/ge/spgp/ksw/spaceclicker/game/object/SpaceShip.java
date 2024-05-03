@@ -4,11 +4,12 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.view.MotionEvent;
 
+import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.ITouchable;
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 
-public class SpaceShip extends Sprite {
+public class SpaceShip extends Sprite{
     private long speed;
     private long distance;
 
