@@ -4,6 +4,7 @@ import android.graphics.RectF;
 import android.util.Log;
 import android.view.MotionEvent;
 
+import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Button;
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.VertScrollBackground;
 import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
@@ -20,6 +21,7 @@ public class MainScene extends Scene{
         BACKGROUND,
         OBJECT,
         UI,
+        BUTTON,
         END
     }
 
@@ -37,6 +39,20 @@ public class MainScene extends Scene{
 
         scrap = new Scrap();
         add(Layer.UI, scrap);
+
+        Button upgradeButton = new Button(R.mipmap.plus_icon) {
+            @Override
+            public boolean onTouch(MotionEvent event) {
+                float[] pts = Metrics.fromScreen(event.getX(), event.getY());
+                if( dstRect.contains(pts[0], pts[1])){
+                    Scene.push(new UpgradeScene());
+                    return true;
+                }
+                return false;
+            }
+        };
+        upgradeButton.setPosition(2.5f, 15.f, 4.5f, 1.f);
+        add(Layer.BUTTON, upgradeButton);
     }
 
     public void update(float elapsedSeconds) {
@@ -44,20 +60,6 @@ public class MainScene extends Scene{
     }
 
     public boolean onTouch(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            if(IsClickUpgradeButton(event)){
-                new UpgradeScene().push();
-                return true;
-            }
-            else if(spaceShip.onTouch(event))
-                return scrap.onTouch();
-        }
-        return false;
-    }
-
-    private RectF upgradeButtonRect = new RectF(0.f, 15.f, 4.5f, 16.f);
-    private boolean IsClickUpgradeButton(MotionEvent event) {
-        float[] pts = Metrics.fromScreen(event.getX(), event.getY());
-        return upgradeButtonRect.contains(pts[0], pts[1]);
+        return super.onTouch(event);
     }
 }

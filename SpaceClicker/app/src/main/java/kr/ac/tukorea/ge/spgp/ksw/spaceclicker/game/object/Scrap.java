@@ -1,14 +1,6 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.RectF;
-import android.text.Html;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.webkit.WebHistoryItem;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
@@ -40,8 +32,8 @@ public class Scrap implements IGameObject{
         // Load scrap from save file
 
         scrap = (long)999999999; // if value is 100 that means player has 1 scrap, so 123 equals 1.23 scrap
-        scrapPerTouch = 1;
-        scrapPerSecond = 100000;
+        scrapPerTouch = 100;
+        scrapPerSecond = 0;
     }
 
     @Override
@@ -61,7 +53,7 @@ public class Scrap implements IGameObject{
         plusIcon.draw(canvas);
     }
 
-    public boolean onTouch() {
+    public boolean addScrapFromTouch() {
         scrap += scrapPerTouch * SCRAP_MODIFIER;
         return true;
     }

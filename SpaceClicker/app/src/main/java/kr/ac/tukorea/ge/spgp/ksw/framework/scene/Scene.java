@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 
 import java.util.ArrayList;
 
+import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.ITouchable;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
 import kr.ac.tukorea.ge.spgp.ksw.framework.activity.GameActivity;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IBoxCollidable;
@@ -147,7 +148,13 @@ public class Scene {
         }
     }
 
+    protected ArrayList<ITouchable> touchables = new ArrayList<>();
     public boolean onTouch(MotionEvent event) {
+        for(ITouchable touchable : touchables){
+            if(touchable.onTouch(event)){
+                return true;
+            }
+        }
         return false;
     }
 
@@ -175,6 +182,9 @@ public class Scene {
     public <E extends Enum<E>> void add(E layer, IGameObject gameObject) {
         ArrayList<IGameObject> objects = layers.get(layer.ordinal());
         objects.add(gameObject);
+        if(gameObject instanceof ITouchable) {
+            touchables.add((ITouchable) gameObject);
+        }
     }
 
     public <E extends Enum<E>> void remove(E layer, IGameObject gameObject) {
