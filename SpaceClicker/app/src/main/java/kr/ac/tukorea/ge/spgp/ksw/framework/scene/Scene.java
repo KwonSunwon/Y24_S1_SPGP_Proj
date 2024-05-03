@@ -40,6 +40,7 @@ public class Scene {
     public void push() {
         push(this);
     }
+
     public static void pop() {
         Scene scene = top();
         if (scene == null) {
@@ -142,6 +143,7 @@ public class Scene {
                     }
                 }
             }
+            canvas.drawRect(0.f, 15.f, 4.5f, 16.f, bboxPaint);
         }
     }
 
