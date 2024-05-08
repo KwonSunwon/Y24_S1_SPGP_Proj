@@ -10,18 +10,17 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Player;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Scrap;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.SpaceShip;
 
 public class MainScene extends Scene{
-    private SpaceShip spaceShip;
-    private Scrap scrap;
+    private Player player = Player.getInstance();
 
     enum Layer {
         BACKGROUND,
         OBJECT,
         UI,
-        BUTTON,
         END
     }
 
@@ -34,11 +33,7 @@ public class MainScene extends Scene{
         VertScrollBackground bg = new VertScrollBackground(R.mipmap.bg_space, 1.f);
         add(Layer.BACKGROUND, bg);
 
-        spaceShip = new SpaceShip();
-        add(Layer.OBJECT, spaceShip);
-
-        scrap = new Scrap();
-        add(Layer.UI, scrap);
+        add(Layer.OBJECT, player);
 
         Button upgradeButton = new Button(R.mipmap.plus_icon) {
             @Override
@@ -52,16 +47,12 @@ public class MainScene extends Scene{
             }
         };
         upgradeButton.setPosition(2.5f, 15.f, 4.5f, 1.f);
-        add(Layer.BUTTON, upgradeButton);
+        add(Layer.UI, upgradeButton);
     }
 
     @Override
     public boolean onTouch(MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN){
-            if(spaceShip.onTouch(event)) {
-                scrap.addScrapFromTouch();
-                return true;
-            }
             return super.onTouch(event);
         }
         return false;

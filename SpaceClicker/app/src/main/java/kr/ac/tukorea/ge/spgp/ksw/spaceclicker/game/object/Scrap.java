@@ -6,7 +6,10 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 
-public class Scrap implements IGameObject{
+public class Scrap implements IGameObject {
+    // TODO
+    // Split Scrap class into two classes: Scrap and ScrapDisplay
+
     private long scrap;
     private long scrapPerSecond;
     private long scrapPerTouch;
