@@ -7,6 +7,14 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.ITouchable;
 
 public class Player implements IGameObject, ITouchable {
+    public enum UpgradeType {
+        CLICK_ANTENNA,
+        AUTO_SCRAP_ROBOT,
+        AUTO_SCRAP_RECYCLE,
+        SPEED_HIRE,
+        SPEED_ENGINE,
+        SPEED_DESIGN,
+    }
     private static Player instance = null;
 
     private Scrap scrap;
@@ -49,5 +57,28 @@ public class Player implements IGameObject, ITouchable {
             return true;
         }
         return false;
+    }
+
+    public void onUpgrade(UpgradeType type){
+        switch (type) {
+            case CLICK_ANTENNA:
+                scrap.addAntennaUpgradeLevel();
+                break;
+            case AUTO_SCRAP_ROBOT:
+                scrap.addRobotUpgradeLevel();
+                break;
+            case AUTO_SCRAP_RECYCLE:
+                scrap.addRecycleUpgradeLevel();
+                break;
+            case SPEED_HIRE:
+                spaceShip.addCrewUpgradeLevel();
+                break;
+            case SPEED_ENGINE:
+                spaceShip.addEngineUpgradeLevel();
+                break;
+            case SPEED_DESIGN:
+                spaceShip.addDesignUpgradeLevel();
+                break;
+        }
     }
 }

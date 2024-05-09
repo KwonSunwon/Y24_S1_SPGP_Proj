@@ -1,6 +1,7 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 
 import android.graphics.Canvas;
+import android.util.Log;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
@@ -14,6 +15,10 @@ public class Scrap implements IGameObject {
     private long scrapPerSecond;
     private long scrapPerTouch;
 
+    private int AntennaUpgradeLevel;
+    private int RobotUpgradeLevel;
+    private int RecycleUpgradeLevel;
+
     private ImageNumber scrapDisplay;
     private ImageNumber scrapPerSecondDisplay;
 
@@ -21,6 +26,7 @@ public class Scrap implements IGameObject {
     private Sprite plusIcon;
 
     private final int SCRAP_MODIFIER = 100;
+    private float scrapAdder = 0;
 
     public Scrap() {
         scrapDisplay = new ImageNumber(R.mipmap.font1, 8.f, 0.5f, 0.3f);
@@ -34,15 +40,23 @@ public class Scrap implements IGameObject {
 
         // Load scrap from save file
 
-        scrap = (long)999999999; // if value is 100 that means player has 1 scrap, so 123 equals 1.23 scrap
-        scrapPerTouch = 1;
+        scrap = (long)9999999_99; // if value is 100 that means player has 1 scrap, so 123 equals 1.23 scrap
+        scrapPerTouch = 100;
         scrapPerSecond = 0;
+
+        AntennaUpgradeLevel = 0;
+        RobotUpgradeLevel = 0;
+        RecycleUpgradeLevel = 0;
     }
 
     @Override
     public void update(float elapsedSeconds){
-        float scrapAdder = scrapPerSecond * elapsedSeconds;
-        scrap += (long) (scrapAdder * SCRAP_MODIFIER);
+        scrapPerSecond = (RobotUpgradeLevel * 100) + (RecycleUpgradeLevel * 500);
+        scrapAdder += scrapPerSecond * elapsedSeconds;
+        if(scrapAdder >= 1_00){
+            scrap += (long)scrapAdder;
+            scrapAdder -= (long)scrapAdder;
+        }
         scrapDisplay.setNumber(scrap / SCRAP_MODIFIER);
         scrapPerSecondDisplay.setNumber(scrapPerSecond / SCRAP_MODIFIER);
     }
@@ -57,7 +71,32 @@ public class Scrap implements IGameObject {
     }
 
     public boolean addScrapFromTouch() {
-        scrap += scrapPerTouch * SCRAP_MODIFIER;
+        scrap += scrapPerTouch;
+        scrap += AntennaUpgradeLevel * 50;
         return true;
+    }
+
+    public void setAntennaUpgradeLevel(int antennaUpgradeLevel) {
+        AntennaUpgradeLevel = antennaUpgradeLevel;
+    }
+
+    public void setRobotUpgradeLevel(int robotUpgradeLevel) {
+        RobotUpgradeLevel = robotUpgradeLevel;
+    }
+
+    public void setRecycleUpgradeLevel(int recycleUpgradeLevel) {
+        RecycleUpgradeLevel = recycleUpgradeLevel;
+    }
+
+    public void addAntennaUpgradeLevel() {
+        AntennaUpgradeLevel++;
+    }
+
+    public void addRobotUpgradeLevel() {
+        RobotUpgradeLevel++;
+    }
+
+    public void addRecycleUpgradeLevel() {
+        RecycleUpgradeLevel++;
     }
 }
