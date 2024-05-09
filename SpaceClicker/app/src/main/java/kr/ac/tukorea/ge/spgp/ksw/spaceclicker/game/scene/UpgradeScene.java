@@ -6,6 +6,7 @@ import android.view.MotionEvent;
 import androidx.annotation.NonNull;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Button;
+import kr.ac.tukorea.ge.spgp.ksw.framework.objects.VertScrollBackground;
 import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
@@ -25,22 +26,25 @@ public class UpgradeScene extends Scene {
 
         initLayers(Layer.END);
 
-        Button upgrade1 = makeUpgradeButton(R.mipmap.km, Player.UpgradeType.CLICK_ANTENNA, 2.25f, 3.f);
+        VertScrollBackground background = new VertScrollBackground(R.mipmap.bg_space, 1.f);
+        add(Layer.BACKGROUND, background);
+
+        Button upgrade1 = makeUpgradeButton(R.mipmap.up1, Player.UpgradeType.CLICK_ANTENNA, 2.25f, 3.f);
         add(Layer.UI, upgrade1);
 
-        Button upgrade2 = makeUpgradeButton(R.mipmap.km, Player.UpgradeType.SPEED_HIRE, 6.75f, 3.f);
+        Button upgrade2 = makeUpgradeButton(R.mipmap.up2, Player.UpgradeType.SPEED_HIRE, 6.75f, 3.f);
         add(Layer.UI, upgrade2);
 
-        Button upgrade3 = makeUpgradeButton(R.mipmap.km, Player.UpgradeType.AUTO_SCRAP_ROBOT, 2.25f, 8.f);
+        Button upgrade3 = makeUpgradeButton(R.mipmap.up3, Player.UpgradeType.AUTO_SCRAP_ROBOT, 2.25f, 8.f);
         add(Layer.UI, upgrade3);
 
-        Button upgrade4 = makeUpgradeButton(R.mipmap.km, Player.UpgradeType.SPEED_ENGINE, 6.75f, 8.f);
+        Button upgrade4 = makeUpgradeButton(R.mipmap.up5, Player.UpgradeType.SPEED_ENGINE, 6.75f, 8.f);
         add(Layer.UI, upgrade4);
 
-        Button upgrade5 = makeUpgradeButton(R.mipmap.km, Player.UpgradeType.AUTO_SCRAP_RECYCLE, 2.25f, 13.f);
+        Button upgrade5 = makeUpgradeButton(R.mipmap.up4, Player.UpgradeType.AUTO_SCRAP_RECYCLE, 2.25f, 13.f);
         add(Layer.UI, upgrade5);
 
-        Button upgrade6 = makeUpgradeButton(R.mipmap.km, Player.UpgradeType.SPEED_DESIGN, 6.75f, 13.f);
+        Button upgrade6 = makeUpgradeButton(R.mipmap.up6, Player.UpgradeType.SPEED_DESIGN, 6.75f, 13.f);
         add(Layer.UI, upgrade6);
     }
 

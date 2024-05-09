@@ -40,7 +40,7 @@ public class MainScene extends Scene{
 
         add(Layer.OBJECT, player);
 
-        Button upgradeButton = new Button(R.mipmap.plus_icon) {
+        Button upgradeButton = new Button(R.mipmap.upgrade_button) {
             @Override
             public boolean onTouch(MotionEvent event) {
                 float[] pts = Metrics.fromScreen(event.getX(), event.getY());
@@ -51,10 +51,10 @@ public class MainScene extends Scene{
                 return false;
             }
         };
-        upgradeButton.setPosition(2.5f, 15.f, 4.5f, 1.f);
+        upgradeButton.setPosition(2.25f, 13.5f, 4.f, 1.5f);
         add(Layer.UI, upgradeButton);
 
-        Button achievementButton = new Button(R.mipmap.plus_icon) {
+        Button achievementButton = new Button(R.mipmap.achievement_button) {
             @Override
             public boolean onTouch(MotionEvent event) {
                 float[] pts = Metrics.fromScreen(event.getX(), event.getY());
@@ -65,7 +65,7 @@ public class MainScene extends Scene{
                 return false;
             }
         };
-        achievementButton.setPosition(7.5f, 15.f, 4.5f, 1.f);
+        achievementButton.setPosition(6.75f, 13.5f, 4.f, 1.5f);
         add(Layer.UI, achievementButton);
     }
 
@@ -74,7 +74,7 @@ public class MainScene extends Scene{
         super.update(elapsedSeconds);
 
         // Add random background object
-        if(new Random().nextInt(100) < 1){
+        if(new Random().nextInt(300) < 1){
             RandomBgObject bgObject = (RandomBgObject) RecycleBin.get(RandomBgObject.class);
             if(bgObject == null){
                 bgObject = new RandomBgObject();
