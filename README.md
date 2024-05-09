@@ -238,3 +238,7 @@ _**컨셉**_: 우주선을 타고 클릭을 통해 스크랩을 수집해 우주
 
 - Sprite를 상속받은 클래스로 숫자를 이미지로 표현
 - 숫자를 화면에 표시할 경우가 많아 클래스를 만들어 관리
+
+## 6. 게임 실행 화면
+
+![gamePlayScreen1](.md_res/gameScreen1.png "Game Play Screen")
