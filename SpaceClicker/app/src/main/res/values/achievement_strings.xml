@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="achievement1_name">First TV Show</string>
+    <string name="achievement1_desc">First Upgrade Antenna</string>
+    <string name="achievement2_name">IronMan</string>
+    <string name="achievement2_desc">First Upgrade Robot Arm</string>
+    <string name="achievement3_name">First Upgrade</string>
+    <string name="achievement3_desc">First Upgrade Recycle</string>
+    <string name="achievement4_name">New Crew</string>
+    <string name="achievement4_desc">First Hire Crew</string>
+    <string name="achievement5_name">First Upgrade</string>
+    <string name="achievement5_desc">First Upgrade Engine</string>
+    <string name="achievement6_name">First Upgrade</string>
+    <string name="achievement6_desc">First Upgrade Design</string>
+    <string name="achievement7_name">Get 7 777 777</string>
+    <string name="achievement7_desc">Get 7 777 777 Scrap</string>
+    <string name="achievement8_name">Move 1AU</string>
+    <string name="achievement8_desc">Move 1AU</string>
+    <string name="achievement9_name">Move 30AU</string>
+    <string name="achievement9_desc">Move 30AU</string>
+    <string name="achievement10_name">Move 20.2 Billion</string>
+    <string name="achievement10_desc">Move 20.2 Billion</string>
+
+    <string name="achievement11_name">Move 24.2 Billion</string>
+    <string name="achievement11_desc">Move 24.2 Billion</string>
+    <string name="achievement12_name">Clear mini game 1</string>
+    <string name="achievement12_desc">Clear mini game 1</string>
+    <string name="achievement13_name">Clear mini game 2</string>
+    <string name="achievement13_desc">Clear mini game 2</string>
+    <string name="achievement14_name">Fail mini game 2</string>
+    <string name="achievement14_desc">Fail mini game 2</string>
+    <string name="achievement15_name">Reach 11.2km/s</string>
+    <string name="achievement15_desc">Reach 11.2km/s</string>
+    <string name="achievement16_name">Reach 1000SPS</string>
+    <string name="achievement16_desc">Reach 1000SPS</string>
+    <string name="achievement17_name">Reach 100km/s</string>
+    <string name="achievement17_desc">Reach 100km/s</string>
+    <string name="achievement18_name">Return to base</string>
+    <string name="achievement18_desc">Return to base</string>
+    <string name="achievement19_name">Touch screen 10,000 Times</string>
+    <string name="achievement19_desc">Touch screen 10,000 Times</string>
+    <string name="achievement20_name">Auto Pilot</string>
+    <string name="achievement20_desc">Move 1,000,000km during background</string>
+</resources>

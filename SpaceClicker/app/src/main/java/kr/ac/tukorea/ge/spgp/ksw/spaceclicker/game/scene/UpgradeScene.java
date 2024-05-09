@@ -25,27 +25,27 @@ public class UpgradeScene extends Scene {
 
         initLayers(Layer.END);
 
-        Button upgrade1 = getButton(R.mipmap.km, Player.UpgradeType.CLICK_ANTENNA, 2.25f, 3.f);
+        Button upgrade1 = makeUpgradeButton(R.mipmap.km, Player.UpgradeType.CLICK_ANTENNA, 2.25f, 3.f);
         add(Layer.UI, upgrade1);
 
-        Button upgrade2 = getButton(R.mipmap.km, Player.UpgradeType.SPEED_HIRE, 6.75f, 3.f);
+        Button upgrade2 = makeUpgradeButton(R.mipmap.km, Player.UpgradeType.SPEED_HIRE, 6.75f, 3.f);
         add(Layer.UI, upgrade2);
 
-        Button upgrade3 = getButton(R.mipmap.km, Player.UpgradeType.AUTO_SCRAP_ROBOT, 2.25f, 8.f);
+        Button upgrade3 = makeUpgradeButton(R.mipmap.km, Player.UpgradeType.AUTO_SCRAP_ROBOT, 2.25f, 8.f);
         add(Layer.UI, upgrade3);
 
-        Button upgrade4 = getButton(R.mipmap.km, Player.UpgradeType.SPEED_ENGINE, 6.75f, 8.f);
+        Button upgrade4 = makeUpgradeButton(R.mipmap.km, Player.UpgradeType.SPEED_ENGINE, 6.75f, 8.f);
         add(Layer.UI, upgrade4);
 
-        Button upgrade5 = getButton(R.mipmap.km, Player.UpgradeType.AUTO_SCRAP_RECYCLE, 2.25f, 13.f);
+        Button upgrade5 = makeUpgradeButton(R.mipmap.km, Player.UpgradeType.AUTO_SCRAP_RECYCLE, 2.25f, 13.f);
         add(Layer.UI, upgrade5);
 
-        Button upgrade6 = getButton(R.mipmap.km, Player.UpgradeType.SPEED_DESIGN, 6.75f, 13.f);
+        Button upgrade6 = makeUpgradeButton(R.mipmap.km, Player.UpgradeType.SPEED_DESIGN, 6.75f, 13.f);
         add(Layer.UI, upgrade6);
     }
 
     @NonNull
-    private static Button getButton(int mipmap, Player.UpgradeType upgradeType, float x, float y) {
+    private static Button makeUpgradeButton(int mipmap, Player.UpgradeType upgradeType, float x, float y) {
         Button upgrade1 = new Button(mipmap) {
             @Override
             public boolean onTouch(MotionEvent event) {

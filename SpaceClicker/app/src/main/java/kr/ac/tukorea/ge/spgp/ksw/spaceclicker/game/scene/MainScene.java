@@ -48,6 +48,20 @@ public class MainScene extends Scene{
         };
         upgradeButton.setPosition(2.5f, 15.f, 4.5f, 1.f);
         add(Layer.UI, upgradeButton);
+
+        Button achievementButton = new Button(R.mipmap.plus_icon) {
+            @Override
+            public boolean onTouch(MotionEvent event) {
+                float[] pts = Metrics.fromScreen(event.getX(), event.getY());
+                if( dstRect.contains(pts[0], pts[1])){
+                    Scene.push(new AchievementScene());
+                    return true;
+                }
+                return false;
+            }
+        };
+        achievementButton.setPosition(7.5f, 15.f, 4.5f, 1.f);
+        add(Layer.UI, achievementButton);
     }
 
     @Override

@@ -19,10 +19,12 @@ public class Player implements IGameObject, ITouchable {
 
     private Scrap scrap;
     private SpaceShip spaceShip;
+    private AchievementManager achievement;
 
     private Player() {
         scrap = new Scrap();
         spaceShip = new SpaceShip();
+        achievement = new AchievementManager();
     }
 
     public static Player getInstance() {
@@ -63,21 +65,27 @@ public class Player implements IGameObject, ITouchable {
         switch (type) {
             case CLICK_ANTENNA:
                 scrap.addAntennaUpgradeLevel();
+                achievement.checkAchievement(0);
                 break;
             case AUTO_SCRAP_ROBOT:
                 scrap.addRobotUpgradeLevel();
+                achievement.checkAchievement(1);
                 break;
             case AUTO_SCRAP_RECYCLE:
                 scrap.addRecycleUpgradeLevel();
+                achievement.checkAchievement(2);
                 break;
             case SPEED_HIRE:
                 spaceShip.addCrewUpgradeLevel();
+                achievement.checkAchievement(3);
                 break;
             case SPEED_ENGINE:
                 spaceShip.addEngineUpgradeLevel();
+                achievement.checkAchievement(4);
                 break;
             case SPEED_DESIGN:
                 spaceShip.addDesignUpgradeLevel();
+                achievement.checkAchievement(5);
                 break;
         }
     }
