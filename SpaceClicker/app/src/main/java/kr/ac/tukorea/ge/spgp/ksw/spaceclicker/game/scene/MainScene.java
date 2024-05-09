@@ -4,21 +4,26 @@ import android.graphics.RectF;
 import android.util.Log;
 import android.view.MotionEvent;
 
+import java.util.Random;
+
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Button;
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.VertScrollBackground;
+import kr.ac.tukorea.ge.spgp.ksw.framework.scene.RecycleBin;
 import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Player;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.RandomBgObject;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Scrap;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.SpaceShip;
 
 public class MainScene extends Scene{
     private Player player = Player.getInstance();
 
-    enum Layer {
+    public enum Layer {
         BACKGROUND,
+        BACK_OBJECT,
         OBJECT,
         UI,
         END
@@ -62,6 +67,20 @@ public class MainScene extends Scene{
         };
         achievementButton.setPosition(7.5f, 15.f, 4.5f, 1.f);
         add(Layer.UI, achievementButton);
+    }
+
+    @Override
+    public void update(float elapsedSeconds) {
+        super.update(elapsedSeconds);
+
+        // Add random background object
+        if(new Random().nextInt(100) < 1){
+            RandomBgObject bgObject = (RandomBgObject) RecycleBin.get(RandomBgObject.class);
+            if(bgObject == null){
+                bgObject = new RandomBgObject();
+            }
+            add(Layer.BACK_OBJECT, bgObject);
+        }
     }
 
     @Override
