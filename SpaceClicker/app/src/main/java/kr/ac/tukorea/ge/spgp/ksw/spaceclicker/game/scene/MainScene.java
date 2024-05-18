@@ -13,6 +13,7 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.BgObjectGenerator;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Player;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.RandomBgObject;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Scrap;
@@ -67,20 +68,14 @@ public class MainScene extends Scene{
         };
         achievementButton.setPosition(6.75f, 13.5f, 4.f, 1.5f);
         add(Layer.UI, achievementButton);
+
+        BgObjectGenerator bgObjectGenerator = new BgObjectGenerator();
+        add(Layer.BACK_OBJECT, bgObjectGenerator);
     }
 
     @Override
     public void update(float elapsedSeconds) {
         super.update(elapsedSeconds);
-
-        // Add random background object
-        if(new Random().nextInt(300) < 1){
-            RandomBgObject bgObject = (RandomBgObject) RecycleBin.get(RandomBgObject.class);
-            if(bgObject == null){
-                bgObject = new RandomBgObject();
-            }
-            add(Layer.BACK_OBJECT, bgObject);
-        }
     }
 
     @Override

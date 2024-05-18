@@ -14,7 +14,7 @@ public class RandomBgObject extends Sprite implements IRecyclable {
     public RandomBgObject() {
         super(R.mipmap.crate1);
         // Set random x position
-        setPosition((float) Math.random() * 10, 0, 1, 1);
+        setPosition((float) Math.random() * 10, -5, 1, 1);
         // Set random speed
         dy = (float) Math.random() * 2 + 1;
     }
