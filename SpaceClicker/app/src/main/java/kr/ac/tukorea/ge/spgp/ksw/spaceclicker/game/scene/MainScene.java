@@ -14,6 +14,7 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.BgObjectGenerator;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.MiniGameEventGenerator;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Player;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.RandomBgObject;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Scrap;
@@ -71,6 +72,9 @@ public class MainScene extends Scene{
 
         BgObjectGenerator bgObjectGenerator = new BgObjectGenerator();
         add(Layer.BACK_OBJECT, bgObjectGenerator);
+
+        MiniGameEventGenerator miniGameEventGenerator = new MiniGameEventGenerator();
+        add(Layer.UI, miniGameEventGenerator);
     }
 
     @Override

@@ -49,4 +49,8 @@ public class Sprite implements IGameObject {
     public void draw(Canvas canvas) {
         canvas.drawBitmap(bitmap, null, dstRect, null);
     }
+
+    public RectF getDstRect() {
+        return dstRect;
+    }
 }
