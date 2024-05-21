@@ -48,6 +48,10 @@ public class SpaceShip extends Sprite{
     @Override
     public void update(float elapsedSeconds) {
         super.update(elapsedSeconds);
+        crewUpgradeLevel = Player.getUpgradeLevel(Player.UpgradeType.SPEED_HIRE);
+        engineUpgradeLevel = Player.getUpgradeLevel(Player.UpgradeType.SPEED_ENGINE);
+        designUpgradeLevel = Player.getUpgradeLevel(Player.UpgradeType.SPEED_DESIGN);
+
         long speed = 1 + crewUpgradeLevel * 1 + engineUpgradeLevel * 5 + designUpgradeLevel * 10;
         distanceAdder += (speed * elapsedSeconds);
         if (distanceAdder >= 1) {
@@ -70,17 +74,5 @@ public class SpaceShip extends Sprite{
     public boolean onTouch(MotionEvent event) {
         float[] pts = Metrics.fromScreen(event.getX(), event.getY());
         return dstRect.contains(pts[0], pts[1]);
-    }
-
-    public void addCrewUpgradeLevel() {
-        crewUpgradeLevel++;
-    }
-
-    public void addEngineUpgradeLevel() {
-        engineUpgradeLevel++;
-    }
-
-    public void addDesignUpgradeLevel() {
-        designUpgradeLevel++;
     }
 }

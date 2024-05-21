@@ -3,6 +3,10 @@ package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Vector;
+
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.ITouchable;
 
@@ -21,10 +25,17 @@ public class Player implements IGameObject, ITouchable {
     private SpaceShip spaceShip;
     private AchievementManager achievement;
 
+    public HashMap<UpgradeType, Integer> UpgradeLevel = new HashMap<>();
+
     private Player() {
         scrap = new Scrap();
         spaceShip = new SpaceShip();
         achievement = new AchievementManager();
+
+        for(int i = 0; i < UpgradeType.values().length; i++){
+            UpgradeType type = UpgradeType.values()[i];
+            UpgradeLevel.put(type, 0);
+        }
     }
 
     public static Player getInstance() {
@@ -32,6 +43,12 @@ public class Player implements IGameObject, ITouchable {
             instance = new Player();
         }
         return instance;
+    }
+
+    static public int getUpgradeLevel(UpgradeType type){
+        if (!getInstance().UpgradeLevel.containsKey(type))
+            return 0;
+        return getInstance().UpgradeLevel.get(type);
     }
 
     public void update(float elapsedSeconds) {
@@ -44,14 +61,6 @@ public class Player implements IGameObject, ITouchable {
         spaceShip.draw(canvas);
     }
 
-    public Scrap getScrap() {
-        return scrap;
-    }
-
-    public SpaceShip getSpaceShip() {
-        return spaceShip;
-    }
-
     @Override
     public boolean onTouch(MotionEvent event) {
         if(spaceShip.onTouch(event)) {
@@ -61,32 +70,10 @@ public class Player implements IGameObject, ITouchable {
         return false;
     }
 
-    public void onUpgrade(UpgradeType type){
-        switch (type) {
-            case CLICK_ANTENNA:
-                scrap.addAntennaUpgradeLevel();
-                achievement.checkAchievement(0);
-                break;
-            case AUTO_SCRAP_ROBOT:
-                scrap.addRobotUpgradeLevel();
-                achievement.checkAchievement(1);
-                break;
-            case AUTO_SCRAP_RECYCLE:
-                scrap.addRecycleUpgradeLevel();
-                achievement.checkAchievement(2);
-                break;
-            case SPEED_HIRE:
-                spaceShip.addCrewUpgradeLevel();
-                achievement.checkAchievement(3);
-                break;
-            case SPEED_ENGINE:
-                spaceShip.addEngineUpgradeLevel();
-                achievement.checkAchievement(4);
-                break;
-            case SPEED_DESIGN:
-                spaceShip.addDesignUpgradeLevel();
-                achievement.checkAchievement(5);
-                break;
-        }
+    public void onUpgrade(UpgradeType type, int cost){
+        if (!scrap.useScrap(cost))
+            return;
+        achievement.checkAchievement(type.ordinal());
+        UpgradeLevel.put(type, UpgradeLevel.get(type) + 1);
     }
 }

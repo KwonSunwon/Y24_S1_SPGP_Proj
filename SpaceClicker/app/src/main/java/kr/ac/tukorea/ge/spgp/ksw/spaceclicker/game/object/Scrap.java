@@ -51,6 +51,9 @@ public class Scrap implements IGameObject {
 
     @Override
     public void update(float elapsedSeconds){
+        RobotUpgradeLevel = Player.getUpgradeLevel(Player.UpgradeType.AUTO_SCRAP_ROBOT);
+        RecycleUpgradeLevel = Player.getUpgradeLevel(Player.UpgradeType.AUTO_SCRAP_RECYCLE);
+
         scrapPerSecond = (RobotUpgradeLevel * 100) + (RecycleUpgradeLevel * 500);
         scrapAdder += scrapPerSecond * elapsedSeconds;
         if(scrapAdder >= 1_00){
@@ -71,32 +74,19 @@ public class Scrap implements IGameObject {
     }
 
     public boolean addScrapFromTouch() {
+        AntennaUpgradeLevel = Player.getUpgradeLevel(Player.UpgradeType.CLICK_ANTENNA);
+
         scrap += scrapPerTouch;
         scrap += AntennaUpgradeLevel * 50;
         return true;
     }
 
-    public void setAntennaUpgradeLevel(int antennaUpgradeLevel) {
-        AntennaUpgradeLevel = antennaUpgradeLevel;
-    }
-
-    public void setRobotUpgradeLevel(int robotUpgradeLevel) {
-        RobotUpgradeLevel = robotUpgradeLevel;
-    }
-
-    public void setRecycleUpgradeLevel(int recycleUpgradeLevel) {
-        RecycleUpgradeLevel = recycleUpgradeLevel;
-    }
-
-    public void addAntennaUpgradeLevel() {
-        AntennaUpgradeLevel++;
-    }
-
-    public void addRobotUpgradeLevel() {
-        RobotUpgradeLevel++;
-    }
-
-    public void addRecycleUpgradeLevel() {
-        RecycleUpgradeLevel++;
+    public boolean useScrap(long scrap) {
+        long modeScrap = scrap * SCRAP_MODIFIER;
+        if (this.scrap < modeScrap) {
+            return false;
+        }
+        this.scrap -= modeScrap;
+        return true;
     }
 }

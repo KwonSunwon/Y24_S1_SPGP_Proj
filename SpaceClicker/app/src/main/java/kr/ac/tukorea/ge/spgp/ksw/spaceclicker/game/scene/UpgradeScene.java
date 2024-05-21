@@ -12,6 +12,7 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Player;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.UpgradeButton;
 
 public class UpgradeScene extends Scene {
     enum Layer {
@@ -29,42 +30,29 @@ public class UpgradeScene extends Scene {
         VertScrollBackground background = new VertScrollBackground(R.mipmap.bg_space, 1.f);
         add(Layer.BACKGROUND, background);
 
-        Button upgrade1 = makeUpgradeButton(R.mipmap.up1, Player.UpgradeType.CLICK_ANTENNA, 2.25f, 3.f);
+        UpgradeButton upgrade1 = new UpgradeButton(R.mipmap.up1, Player.UpgradeType.CLICK_ANTENNA, 15);
+        upgrade1.setPosition(2.25f, 3.f, 4.f, 4.f);
         add(Layer.UI, upgrade1);
 
-        Button upgrade2 = makeUpgradeButton(R.mipmap.up2, Player.UpgradeType.SPEED_HIRE, 6.75f, 3.f);
+        UpgradeButton upgrade2 = new UpgradeButton(R.mipmap.up2, Player.UpgradeType.SPEED_HIRE, 100);
+        upgrade2.setPosition(6.75f, 3.f, 4.f, 4.f);
         add(Layer.UI, upgrade2);
 
-        Button upgrade3 = makeUpgradeButton(R.mipmap.up3, Player.UpgradeType.AUTO_SCRAP_ROBOT, 2.25f, 8.f);
+        UpgradeButton upgrade3 = new UpgradeButton(R.mipmap.up3, Player.UpgradeType.AUTO_SCRAP_ROBOT, 50);
+        upgrade3.setPosition(2.25f, 8.f, 4.f, 4.f);
         add(Layer.UI, upgrade3);
 
-        Button upgrade4 = makeUpgradeButton(R.mipmap.up5, Player.UpgradeType.SPEED_ENGINE, 6.75f, 8.f);
+        UpgradeButton upgrade4 = new UpgradeButton(R.mipmap.up5, Player.UpgradeType.SPEED_ENGINE, 1000);
+        upgrade4.setPosition(6.75f, 8.f, 4.f, 4.f);
         add(Layer.UI, upgrade4);
 
-        Button upgrade5 = makeUpgradeButton(R.mipmap.up4, Player.UpgradeType.AUTO_SCRAP_RECYCLE, 2.25f, 13.f);
+        UpgradeButton upgrade5 = new UpgradeButton(R.mipmap.up4, Player.UpgradeType.AUTO_SCRAP_RECYCLE, 100);
+        upgrade5.setPosition(2.25f, 13.f, 4.f, 4.f);
         add(Layer.UI, upgrade5);
 
-        Button upgrade6 = makeUpgradeButton(R.mipmap.up6, Player.UpgradeType.SPEED_DESIGN, 6.75f, 13.f);
+        UpgradeButton upgrade6 = new UpgradeButton(R.mipmap.up6, Player.UpgradeType.SPEED_DESIGN, 10000);
+        upgrade6.setPosition(6.75f, 13.f, 4.f, 4.f);
         add(Layer.UI, upgrade6);
-    }
-
-    @NonNull
-    private static Button makeUpgradeButton(int mipmap, Player.UpgradeType upgradeType, float x, float y) {
-        Button upgrade1 = new Button(mipmap) {
-            @Override
-            public boolean onTouch(MotionEvent event) {
-                if (event.getAction() != MotionEvent.ACTION_DOWN)
-                    return false;
-                float[] pts = Metrics.fromScreen(event.getX(), event.getY());
-                if (dstRect.contains(pts[0], pts[1])) {
-                    Player.getInstance().onUpgrade(upgradeType);
-                    return true;
-                }
-                return false;
-            }
-        };
-        upgrade1.setPosition(x, y, 4.f, 4.f);
-        return upgrade1;
     }
 
     @Override
