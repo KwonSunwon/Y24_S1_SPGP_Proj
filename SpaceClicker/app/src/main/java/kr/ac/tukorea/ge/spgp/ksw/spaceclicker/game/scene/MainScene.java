@@ -45,6 +45,8 @@ public class MainScene extends Scene{
         Button upgradeButton = new Button(R.mipmap.upgrade_button) {
             @Override
             public boolean onTouch(MotionEvent event) {
+                if(event.getAction() != MotionEvent.ACTION_DOWN)
+                    return false;
                 float[] pts = Metrics.fromScreen(event.getX(), event.getY());
                 if( dstRect.contains(pts[0], pts[1])){
                     Scene.push(new UpgradeScene());
@@ -59,6 +61,8 @@ public class MainScene extends Scene{
         Button achievementButton = new Button(R.mipmap.achievement_button) {
             @Override
             public boolean onTouch(MotionEvent event) {
+                if(event.getAction() != MotionEvent.ACTION_DOWN)
+                    return false;
                 float[] pts = Metrics.fromScreen(event.getX(), event.getY());
                 if( dstRect.contains(pts[0], pts[1])){
                     Scene.push(new AchievementScene());
@@ -75,18 +79,5 @@ public class MainScene extends Scene{
 
         MiniGameEventGenerator miniGameEventGenerator = new MiniGameEventGenerator();
         add(Layer.UI, miniGameEventGenerator);
-    }
-
-    @Override
-    public void update(float elapsedSeconds) {
-        super.update(elapsedSeconds);
-    }
-
-    @Override
-    public boolean onTouch(MotionEvent event) {
-        if(event.getAction() == MotionEvent.ACTION_DOWN){
-            return super.onTouch(event);
-        }
-        return false;
     }
 }

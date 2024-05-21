@@ -67,11 +67,6 @@ public class UpgradeScene extends Scene {
         return upgrade1;
     }
 
-
-    public void update(float elapsedSeconds) {
-        super.update(elapsedSeconds);
-    }
-
     @Override
     public boolean onBackPressed() {
         Scene.pop();
