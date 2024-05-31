@@ -28,7 +28,7 @@
             android:padding="0dp"
             android:src="@mipmap/upgrade_button"
             android:scaleType="fitCenter"
-            android:onClick="onUpgradeClick"/>
+            android:onClick="onUpgradeButtonClick"/>
 
         <ImageButton
             android:id="@+id/achievementButton"
@@ -38,7 +38,7 @@
             android:padding="0dp"
             android:src="@mipmap/achievement_button"
             android:scaleType="fitCenter"
-            android:onClick="onAchievementClick"/>/>
+            android:onClick="onAchievementButtonClick"/>
 
     </LinearLayout>
 

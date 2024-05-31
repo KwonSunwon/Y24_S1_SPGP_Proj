@@ -1,6 +1,7 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,13 +19,13 @@ public class MainActivity extends GameActivity {
         new MainScene().push();
     }
 
-    public void onUpgradeClick(View view) {
+    public void onUpgradeButtonClick(View view) {
         Log.d("MainActivity", "onUpgradeClick");
         onPause();
-
+        startActivity(new Intent(this, UpgradeActivity.class));
     }
 
-    public void onAchievementClick(View view) {
+    public void onAchievementButtonClick(View view) {
         Log.d("MainActivity", "onAchievementClick");
         onPause();
     }

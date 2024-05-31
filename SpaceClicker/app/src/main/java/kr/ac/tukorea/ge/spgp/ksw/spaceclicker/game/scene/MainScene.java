@@ -13,6 +13,7 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.app.MainActivity;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.BgObjectGenerator;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.MiniGameEventGenerator;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Player;
@@ -42,42 +43,15 @@ public class MainScene extends Scene{
 
         add(Layer.OBJECT, player);
 
-        Button upgradeButton = new Button(R.mipmap.upgrade_button) {
-            @Override
-            public boolean onTouch(MotionEvent event) {
-                if(event.getAction() != MotionEvent.ACTION_DOWN)
-                    return false;
-                float[] pts = Metrics.fromScreen(event.getX(), event.getY());
-                if( dstRect.contains(pts[0], pts[1])){
-                    Scene.push(new UpgradeScene());
-                    return true;
-                }
-                return false;
-            }
-        };
-        upgradeButton.setPosition(2.25f, 13.5f, 4.f, 1.5f);
-        add(Layer.UI, upgradeButton);
-
-        Button achievementButton = new Button(R.mipmap.achievement_button) {
-            @Override
-            public boolean onTouch(MotionEvent event) {
-                if(event.getAction() != MotionEvent.ACTION_DOWN)
-                    return false;
-                float[] pts = Metrics.fromScreen(event.getX(), event.getY());
-                if( dstRect.contains(pts[0], pts[1])){
-                    Scene.push(new AchievementScene());
-                    return true;
-                }
-                return false;
-            }
-        };
-        achievementButton.setPosition(6.75f, 13.5f, 4.f, 1.5f);
-        add(Layer.UI, achievementButton);
-
         BgObjectGenerator bgObjectGenerator = new BgObjectGenerator();
         add(Layer.BACK_OBJECT, bgObjectGenerator);
 
         MiniGameEventGenerator miniGameEventGenerator = new MiniGameEventGenerator();
         add(Layer.UI, miniGameEventGenerator);
+    }
+
+    @Override
+    protected void onPause() {
+
     }
 }

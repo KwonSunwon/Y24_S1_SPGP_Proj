@@ -6,8 +6,9 @@ android {
     namespace = "kr.ac.tukorea.ge.spgp.ksw.spaceclicker"
     compileSdk = 34
 
-    viewBinding {
-        enable = true
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
     }
 
     defaultConfig {
@@ -18,10 +19,6 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildFeatures {
-        buildConfig = true
     }
 
     buildTypes {
