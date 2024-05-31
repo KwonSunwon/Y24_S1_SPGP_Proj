@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".app.MainActivity">
+    tools:context=".app.MainActivity"
+    android:background="@mipmap/bg_space">
 
     <FrameLayout
         android:id="@+id/gameView"
@@ -19,14 +20,22 @@
         android:layout_height="match_parent"
         android:layout_weight="10">
 
-        <Button
+        <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
-        <Button
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:src="@mipmap/upgrade_button"
+            android:scaleType="fitCenter"/>
+
+        <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:src="@mipmap/achievement_button"
+            android:scaleType="fitCenter"/>
+
     </LinearLayout>
 
 </LinearLayout>
