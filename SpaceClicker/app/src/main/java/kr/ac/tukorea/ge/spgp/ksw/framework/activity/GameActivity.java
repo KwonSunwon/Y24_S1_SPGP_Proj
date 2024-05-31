@@ -14,7 +14,7 @@ public class GameActivity extends AppCompatActivity {
 
     public static GameActivity activity;
     private GameView gameView;
-    private ActivityMainBinding binding;
+    public ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
