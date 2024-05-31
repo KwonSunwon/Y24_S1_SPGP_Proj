@@ -6,6 +6,10 @@ android {
     namespace = "kr.ac.tukorea.ge.spgp.ksw.spaceclicker"
     compileSdk = 34
 
+    viewBinding {
+        enable = true
+    }
+
     defaultConfig {
         applicationId = "kr.ac.tukorea.ge.spgp.ksw.spaceclicker"
         minSdk = 24
