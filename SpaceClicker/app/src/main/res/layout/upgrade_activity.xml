@@ -5,30 +5,105 @@
     android:orientation="vertical"
     android:background="@mipmap/upgrade_bg">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="80sp"
-        android:text="Upgrade"
-        android:textStyle="bold"
-        android:gravity="center"
-        />
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:onClick="onBackClick"
+            />
+    </LinearLayout>
 
-    <ListView
-        android:id="@+id/listView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:choiceMode="singleChoice"
-        />
+        android:orientation="horizontal"
+        >
+        <ImageButton
+            android:id="@+id/upgradeButton"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/up1"
+            android:scaleType="fitCenter"
+            android:padding="0dp"
+            android:onClick="onUpgradeClick"
+            android:layout_weight="1"
+            />
+        <ImageButton
+            android:id="@+id/upgradeButton2"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/up2"
+            android:scaleType="fitCenter"
+            android:padding="0dp"
+            android:onClick="onUpgradeClick"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/upgradeButton"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Upgrade"
-        android:onClick="onUpgradeClick"
-        />
+        <ImageButton
+            android:id="@+id/upgradeButton3"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/up3"
+            android:scaleType="fitCenter"
+            android:padding="0dp"
+            android:onClick="onUpgradeClick"
+            android:layout_weight="1"
+            />
+        <ImageButton
+            android:id="@+id/upgradeButton4"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/up4"
+            android:scaleType="fitCenter"
+            android:padding="0dp"
+            android:onClick="onUpgradeClick"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
+        <ImageButton
+            android:id="@+id/upgradeButton5"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/up5"
+            android:scaleType="fitCenter"
+            android:padding="0dp"
+            android:onClick="onUpgradeClick"
+            android:layout_weight="1"
+            />
+        <ImageButton
+            android:id="@+id/upgradeButton6"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/up6"
+            android:scaleType="fitCenter"
+            android:padding="0dp"
+            android:onClick="onUpgradeClick"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
 </LinearLayout>
