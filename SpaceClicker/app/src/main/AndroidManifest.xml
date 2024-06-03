@@ -25,6 +25,10 @@
             android:name=".app.UpgradeActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".app.AchievementActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

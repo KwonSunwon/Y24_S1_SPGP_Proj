@@ -28,5 +28,6 @@ public class MainActivity extends GameActivity {
     public void onAchievementButtonClick(View view) {
         Log.d("MainActivity", "onAchievementClick");
         onPause();
+        startActivity(new Intent(this, AchievementActivity.class));
     }
 }
