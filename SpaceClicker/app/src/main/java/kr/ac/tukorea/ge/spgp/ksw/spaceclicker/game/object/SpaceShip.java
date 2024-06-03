@@ -9,13 +9,15 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.UpgradeInfo.UPGRADE_TYPE;
+
 public class SpaceShip extends Sprite{
     private long speed;
     private long distance;
 
-    private int crewUpgradeLevel;
-    private int engineUpgradeLevel;
-    private int designUpgradeLevel;
+    private long crewUpgradeLevel;
+    private long engineUpgradeLevel;
+    private long designUpgradeLevel;
 
     private ImageNumber speedDisplay;
     private ImageNumber distanceDisplay;
@@ -48,9 +50,9 @@ public class SpaceShip extends Sprite{
     @Override
     public void update(float elapsedSeconds) {
         super.update(elapsedSeconds);
-        crewUpgradeLevel = Player.getUpgradeLevel(Player.UpgradeType.SPEED_HIRE);
-        engineUpgradeLevel = Player.getUpgradeLevel(Player.UpgradeType.SPEED_ENGINE);
-        designUpgradeLevel = Player.getUpgradeLevel(Player.UpgradeType.SPEED_DESIGN);
+        crewUpgradeLevel = Player.getUpgradeLevel(UPGRADE_TYPE.CREW);
+        engineUpgradeLevel = Player.getUpgradeLevel(UPGRADE_TYPE.ENGINE);
+        designUpgradeLevel = Player.getUpgradeLevel(UPGRADE_TYPE.DESIGN);
 
         long speed = 1 + crewUpgradeLevel * 1 + engineUpgradeLevel * 5 + designUpgradeLevel * 10;
         distanceAdder += (speed * elapsedSeconds);

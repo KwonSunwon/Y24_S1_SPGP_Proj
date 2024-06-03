@@ -49,10 +49,11 @@
             android:id="@+id/upgradeRobot"
             android:src="@mipmap/up3"
             android:onClick="onUpgradeClick"
+            android:tooltipText="@string/achievement1_desc"
             style="@style/upgrade_button" />
         <ImageButton
-            android:id="@+id/upgradeRecycle"
-            android:src="@mipmap/up4"
+            android:id="@+id/upgradeEngine"
+            android:src="@mipmap/up5"
             android:onClick="onUpgradeClick"
             style="@style/upgrade_button" />
     </LinearLayout>
@@ -61,10 +62,9 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="horizontal">
-
         <ImageButton
-            android:id="@+id/upgradeEngine"
-            android:src="@mipmap/up5"
+            android:id="@+id/upgradeRecycle"
+            android:src="@mipmap/up4"
             android:onClick="onUpgradeClick"
             style="@style/upgrade_button" />
         <ImageButton

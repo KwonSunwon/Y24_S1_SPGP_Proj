@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Antenna",
+        "initialCost": 15,
+        "cost": 15,
+        "level": 0
+    },
+    {
+        "name": "Robot",
+        "initialCost": 50,
+        "cost": 50,
+        "level": 0
+    },
+    {
+        "name": "Recycler",
+        "initialCost": 100,
+        "cost": 100,
+        "level": 0
+    },
+    {
+        "name": "Crew",
+        "initialCost": 100,
+        "cost": 100,
+        "level": 0
+    },
+    {
+        "name": "Engine",
+        "initialCost": 1000,
+        "cost": 1000,
+        "level": 0
+    },
+    {
+        "name": "Design",
+        "initialCost": 10000,
+        "cost": 10000,
+        "level": 0
+    }
+]

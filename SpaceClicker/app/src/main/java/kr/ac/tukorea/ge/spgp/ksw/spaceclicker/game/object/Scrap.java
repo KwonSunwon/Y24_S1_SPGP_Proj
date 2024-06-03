@@ -7,6 +7,8 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.UpgradeInfo.UPGRADE_TYPE;
+
 public class Scrap implements IGameObject {
     // TODO
     // Split Scrap class into two classes: Scrap and ScrapDisplay
@@ -15,9 +17,9 @@ public class Scrap implements IGameObject {
     private long scrapPerSecond;
     private long scrapPerTouch;
 
-    private int AntennaUpgradeLevel;
-    private int RobotUpgradeLevel;
-    private int RecycleUpgradeLevel;
+    private long AntennaUpgradeLevel;
+    private long RobotUpgradeLevel;
+    private long RecycleUpgradeLevel;
 
     private ImageNumber scrapDisplay;
     private ImageNumber scrapPerSecondDisplay;
@@ -51,8 +53,8 @@ public class Scrap implements IGameObject {
 
     @Override
     public void update(float elapsedSeconds){
-        RobotUpgradeLevel = Player.getUpgradeLevel(Player.UpgradeType.AUTO_SCRAP_ROBOT);
-        RecycleUpgradeLevel = Player.getUpgradeLevel(Player.UpgradeType.AUTO_SCRAP_RECYCLE);
+        RobotUpgradeLevel = Player.getUpgradeLevel(UPGRADE_TYPE.ROBOT);
+        RecycleUpgradeLevel = Player.getUpgradeLevel(UPGRADE_TYPE.RECYCLE);
 
         scrapPerSecond = (RobotUpgradeLevel * 100) + (RecycleUpgradeLevel * 500);
         scrapAdder += scrapPerSecond * elapsedSeconds;
@@ -74,7 +76,7 @@ public class Scrap implements IGameObject {
     }
 
     public boolean addScrapFromTouch() {
-        AntennaUpgradeLevel = Player.getUpgradeLevel(Player.UpgradeType.CLICK_ANTENNA);
+        AntennaUpgradeLevel = Player.getUpgradeLevel(UPGRADE_TYPE.ANTENNA);
 
         scrap += scrapPerTouch;
         scrap += AntennaUpgradeLevel * 50;
@@ -87,6 +89,14 @@ public class Scrap implements IGameObject {
             return false;
         }
         this.scrap -= modeScrap;
+        return true;
+    }
+
+    public boolean useScrapWithOutModifier(long scrap) {
+        if (this.scrap < scrap) {
+            return false;
+        }
+        this.scrap -= scrap;
         return true;
     }
 }

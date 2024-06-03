@@ -3,6 +3,7 @@ package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -10,32 +11,24 @@ import java.util.Vector;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.ITouchable;
 
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.UpgradeInfo.UPGRADE_TYPE;
+
 public class Player implements IGameObject, ITouchable {
-    public enum UpgradeType {
-        CLICK_ANTENNA,
-        AUTO_SCRAP_ROBOT,
-        AUTO_SCRAP_RECYCLE,
-        SPEED_HIRE,
-        SPEED_ENGINE,
-        SPEED_DESIGN,
-    }
     private static Player instance = null;
 
     private Scrap scrap;
     private SpaceShip spaceShip;
     private AchievementManager achievement;
 
-    public HashMap<UpgradeType, Integer> UpgradeLevel = new HashMap<>();
+    static private ArrayList<UpgradeInfo> upgradeInfo;
 
     private Player() {
         scrap = new Scrap();
         spaceShip = new SpaceShip();
         achievement = new AchievementManager();
 
-        for(int i = 0; i < UpgradeType.values().length; i++){
-            UpgradeType type = UpgradeType.values()[i];
-            UpgradeLevel.put(type, 0);
-        }
+        upgradeInfo = UpgradeInfo.load();
+        upgradeInfo.get(UPGRADE_TYPE.ANTENNA.ordinal());
     }
 
     public static Player getInstance() {
@@ -45,10 +38,8 @@ public class Player implements IGameObject, ITouchable {
         return instance;
     }
 
-    static public int getUpgradeLevel(UpgradeType type){
-        if (!getInstance().UpgradeLevel.containsKey(type))
-            return 0;
-        return getInstance().UpgradeLevel.get(type);
+    static public long getUpgradeLevel(UPGRADE_TYPE type){
+        return upgradeInfo.get(type.ordinal()).getLevel();
     }
 
     public void update(float elapsedSeconds) {
@@ -70,10 +61,11 @@ public class Player implements IGameObject, ITouchable {
         return false;
     }
 
-    public void onUpgrade(UpgradeType type, int cost){
-        if (!scrap.useScrap(cost))
+    public void onUpgrade(UPGRADE_TYPE type){
+        UpgradeInfo info = upgradeInfo.get(type.ordinal());
+        if (!scrap.useScrap(info.getCost()))
             return;
         achievement.checkAchievement(type.ordinal());
-        UpgradeLevel.put(type, UpgradeLevel.get(type) + 1);
+        info.upgrade();
     }
 }
