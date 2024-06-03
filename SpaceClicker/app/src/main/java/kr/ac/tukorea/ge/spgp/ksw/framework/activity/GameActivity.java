@@ -8,20 +8,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.GameView;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.databinding.ActivityMainBinding;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.databinding.MainLayoutBinding;
 
 public class GameActivity extends AppCompatActivity {
 
     public static GameActivity activity;
     private GameView gameView;
-    public ActivityMainBinding binding;
+    public MainLayoutBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = this;
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = MainLayoutBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         FrameLayout dynamicView = binding.gameView;

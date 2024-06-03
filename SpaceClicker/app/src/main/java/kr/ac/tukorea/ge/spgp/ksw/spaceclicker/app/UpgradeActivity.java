@@ -8,19 +8,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.databinding.UpgradeActivityBinding;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.databinding.UpgradeLayoutBinding;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Player;
 
 import static kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.UpgradeInfo.UPGRADE_TYPE;
 
 public class UpgradeActivity extends AppCompatActivity {
     private Player player = Player.getInstance();
-    private UpgradeActivityBinding biding;
+    private UpgradeLayoutBinding biding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        biding = UpgradeActivityBinding.inflate(getLayoutInflater());
+        biding = UpgradeLayoutBinding.inflate(getLayoutInflater());
         setContentView(biding.getRoot());
     }
 
