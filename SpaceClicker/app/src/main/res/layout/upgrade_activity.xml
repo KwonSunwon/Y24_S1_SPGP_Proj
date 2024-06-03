@@ -28,13 +28,13 @@
         android:orientation="horizontal"
         >
         <ImageButton
-            android:id="@+id/upgradeButton"
+            android:id="@+id/upgradeAntenna"
             android:src="@mipmap/up1"
             android:onClick="onUpgradeClick"
             style="@style/upgrade_button"
             />
         <ImageButton
-            android:id="@+id/upgradeButton2"
+            android:id="@+id/upgradeCrew"
             android:src="@mipmap/up2"
             android:onClick="onUpgradeClick"
             style="@style/upgrade_button" />
@@ -46,12 +46,12 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/upgradeButton3"
+            android:id="@+id/upgradeRobot"
             android:src="@mipmap/up3"
             android:onClick="onUpgradeClick"
             style="@style/upgrade_button" />
         <ImageButton
-            android:id="@+id/upgradeButton4"
+            android:id="@+id/upgradeRecycle"
             android:src="@mipmap/up4"
             android:onClick="onUpgradeClick"
             style="@style/upgrade_button" />
@@ -63,12 +63,12 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/upgradeButton5"
+            android:id="@+id/upgradeEngine"
             android:src="@mipmap/up5"
             android:onClick="onUpgradeClick"
             style="@style/upgrade_button" />
         <ImageButton
-            android:id="@+id/upgradeButton6"
+            android:id="@+id/upgradeDesign"
             android:src="@mipmap/up6"
             android:onClick="onUpgradeClick"
             style="@style/upgrade_button" />
