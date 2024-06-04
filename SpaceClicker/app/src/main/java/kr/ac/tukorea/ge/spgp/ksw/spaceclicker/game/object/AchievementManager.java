@@ -16,11 +16,23 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 
 public class AchievementManager implements IGameObject {
-    static final int ACHIEVEMENT_COUNT = 20;
-
+    private static AchievementManager instance = null;
     private static ArrayList<Achievement> achievements;
 
-    static public void init() {
+    static final int ACHIEVEMENT_COUNT = 20;
+
+    public static AchievementManager getInstance() {
+        if (instance == null) {
+            instance = new AchievementManager();
+        }
+        return instance;
+    }
+
+    private AchievementManager() {
+        init();
+    }
+
+    private void init() {
         String[] names = getContext().getResources().getStringArray(R.array.achievement_names);
         String[] descriptions = getContext().getResources().getStringArray(R.array.achievement_descriptions);
 
@@ -34,7 +46,7 @@ public class AchievementManager implements IGameObject {
         getAchievedList();
     }
 
-    static private void getAchievedList() {
+    private void getAchievedList() {
         SharedPreferences achievedList = getContext().getSharedPreferences("AchievedList", 0);
         SharedPreferences.Editor editor = achievedList.edit();
 
@@ -59,13 +71,13 @@ public class AchievementManager implements IGameObject {
         }
     }
 
-    static public void checkAchievements() {
+    public void checkAchievements() {
         for (Achievement achievement : achievements) {
             achievement.checkAchievement();
         }
     }
 
-    static public void checkAchievement(int id) {
+    public void checkAchievement(int id) {
         if (!achievements.get(id).isAchieved()) {
             achievements.get(id).setAchieved(true);
 
@@ -85,15 +97,15 @@ public class AchievementManager implements IGameObject {
         // Do nothing
     }
 
-    public static int getCount() {
+    public int getCount() {
         return ACHIEVEMENT_COUNT;
     }
 
-    public static Achievement getItem(int position) {
+    public Achievement getItem(int position) {
         return achievements.get(position);
     }
 
-    public static void reset(){
+    public void reset(){
         for (Achievement achievement : achievements) {
             achievement.setAchieved(false);
         }

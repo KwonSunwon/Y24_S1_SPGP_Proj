@@ -14,6 +14,7 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.app.MainActivity;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.AchievementManager;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.BgObjectGenerator;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.MiniGameEventGenerator;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Player;
@@ -25,6 +26,7 @@ public class MainScene extends Scene{
     private Player player = Player.getInstance();
 
     public enum Layer {
+        CONTROL,
         BACKGROUND,
         BACK_OBJECT,
         OBJECT,
@@ -48,6 +50,9 @@ public class MainScene extends Scene{
 
         MiniGameEventGenerator miniGameEventGenerator = new MiniGameEventGenerator();
         add(Layer.UI, miniGameEventGenerator);
+
+        AchievementManager achievementManager = AchievementManager.getInstance();
+        add(Layer.CONTROL, achievementManager);
     }
 
     @Override

@@ -18,8 +18,6 @@ public class MainActivity extends GameActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         new MainScene().push();
-
-        AchievementManager.init();
     }
 
     public void onUpgradeButtonClick(View view) {

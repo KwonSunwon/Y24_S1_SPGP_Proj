@@ -9,19 +9,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.databinding.AchievementItemBinding;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.databinding.AchievementLayoutBinding;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Achievement;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.AchievementManager;
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Player;
 
 public class AchievementActivity extends AppCompatActivity {
     private AchievementLayoutBinding biding;
 
-    private Player player = Player.getInstance();
+    private AchievementManager achievementManager = AchievementManager.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +32,12 @@ public class AchievementActivity extends AppCompatActivity {
     private final ListAdapter achievementListAdapter = new BaseAdapter() {
         @Override
         public int getCount() {
-            return AchievementManager.getCount();
+            return achievementManager.getCount();
         }
 
         @Override
         public Object getItem(int position) {
-            return AchievementManager.getItem(position);
+            return achievementManager.getItem(position);
         }
 
         @Override
@@ -59,7 +56,7 @@ public class AchievementActivity extends AppCompatActivity {
                 itemBinding = (AchievementItemBinding) view.getTag();
             }
 
-            Achievement achievement = AchievementManager.getItem(position);
+            Achievement achievement = achievementManager.getItem(position);
             TextView name = itemBinding.achievementName;
             TextView description = itemBinding.achievementDescription;
             if(achievement.isAchieved()) {
