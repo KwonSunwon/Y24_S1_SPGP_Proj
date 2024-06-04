@@ -18,14 +18,12 @@ public class Player implements IGameObject, ITouchable {
 
     private Scrap scrap;
     private SpaceShip spaceShip;
-    private AchievementManager achievement;
 
     static private ArrayList<UpgradeInfo> upgradeInfo;
 
     private Player() {
         scrap = new Scrap();
         spaceShip = new SpaceShip();
-        achievement = new AchievementManager();
 
         upgradeInfo = UpgradeInfo.load();
         upgradeInfo.get(UPGRADE_TYPE.ANTENNA.ordinal());
@@ -65,7 +63,6 @@ public class Player implements IGameObject, ITouchable {
         UpgradeInfo info = upgradeInfo.get(type.ordinal());
         if (!scrap.useScrap(info.getCost()))
             return;
-        achievement.checkAchievement(type.ordinal());
         info.upgrade();
     }
 }

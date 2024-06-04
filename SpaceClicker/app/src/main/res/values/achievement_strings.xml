@@ -1,5 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="achievement_names">
+        <item>@string/achievement1_name</item>
+        <item>@string/achievement2_name</item>
+        <item>@string/achievement3_name</item>
+        <item>@string/achievement4_name</item>
+        <item>@string/achievement5_name</item>
+        <item>@string/achievement6_name</item>
+        <item>@string/achievement7_name</item>
+        <item>@string/achievement8_name</item>
+        <item>@string/achievement9_name</item>
+        <item>@string/achievement10_name</item>
+        <item>@string/achievement11_name</item>
+        <item>@string/achievement12_name</item>
+        <item>@string/achievement13_name</item>
+        <item>@string/achievement14_name</item>
+        <item>@string/achievement15_name</item>
+        <item>@string/achievement16_name</item>
+        <item>@string/achievement17_name</item>
+        <item>@string/achievement18_name</item>
+        <item>@string/achievement19_name</item>
+        <item>@string/achievement20_name</item>
+    </string-array>
+    
+    <string-array name="achievement_descriptions">
+        <item>@string/achievement1_desc</item>
+        <item>@string/achievement2_desc</item>
+        <item>@string/achievement3_desc</item>
+        <item>@string/achievement4_desc</item>
+        <item>@string/achievement5_desc</item>
+        <item>@string/achievement6_desc</item>
+        <item>@string/achievement7_desc</item>
+        <item>@string/achievement8_desc</item>
+        <item>@string/achievement9_desc</item>
+        <item>@string/achievement10_desc</item>
+        <item>@string/achievement11_desc</item>
+        <item>@string/achievement12_desc</item>
+        <item>@string/achievement13_desc</item>
+        <item>@string/achievement14_desc</item>
+        <item>@string/achievement15_desc</item>
+        <item>@string/achievement16_desc</item>
+        <item>@string/achievement17_desc</item>
+        <item>@string/achievement18_desc</item>
+        <item>@string/achievement19_desc</item>
+        <item>@string/achievement20_desc</item>
+    </string-array>
+
+    <integer-array name="achievement_is_achieved">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
+
     <string name="achievement1_name">First TV Show</string>
     <string name="achievement1_desc">First Upgrade Antenna</string>
     <string name="achievement2_name">IronMan</string>
