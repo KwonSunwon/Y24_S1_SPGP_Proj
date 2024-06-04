@@ -61,14 +61,18 @@ public class AchievementActivity extends AppCompatActivity {
             }
 
             Achievement achievement = AchievementManager.getItem(position);
-            itemBinding.achievementName.setText(achievement.getName());
-            itemBinding.achievementDescription.setText(achievement.getDescription());
-
-            if(achievement.isAchieved()){
-                view.setBackgroundColor("#ffff00".hashCode());
-            }else{
-                View v = itemBinding.getRoot();
-                view.setBackgroundColor("#000000".hashCode());
+            TextView name = itemBinding.achievementName;
+            TextView description = itemBinding.achievementDescription;
+            if(achievement.isAchieved()) {
+                itemBinding.achievementName.setText(achievement.getName());
+                itemBinding.achievementDescription.setText(achievement.getDescription());
+                name.setTextColor(getColor(R.color.white));
+                description.setTextColor(getColor(R.color.white));
+            } else {
+                itemBinding.achievementName.setText("???");
+                itemBinding.achievementDescription.setText("???");
+                name.setTextColor(getColor(R.color.black));
+                description.setTextColor(getColor(R.color.black));
             }
             return view;
         }

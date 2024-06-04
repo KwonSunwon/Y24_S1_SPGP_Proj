@@ -11,7 +11,8 @@
         android:layout_weight="2"
         android:text="Achievement Name"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/achievement_description"
@@ -19,7 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Achievement Description"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@color/white"/>
 
 
 </LinearLayout>
