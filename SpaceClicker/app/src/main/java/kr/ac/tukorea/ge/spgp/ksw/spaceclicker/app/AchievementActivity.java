@@ -22,7 +22,6 @@ public class AchievementActivity extends AppCompatActivity {
     private AchievementLayoutBinding biding;
 
     private Player player = Player.getInstance();
-    private ArrayList<Achievement> achievements = AchievementManager.getAchievements();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

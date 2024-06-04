@@ -46,29 +46,6 @@
         <item>@string/achievement20_desc</item>
     </string-array>
 
-    <integer-array name="achievement_is_achieved">
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-    </integer-array>
-
     <string name="achievement1_name">First TV Show</string>
     <string name="achievement1_desc">First Upgrade Antenna</string>
     <string name="achievement2_name">IronMan</string>
