@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -63,6 +64,12 @@ public class AchievementActivity extends AppCompatActivity {
             itemBinding.achievementName.setText(achievement.getName());
             itemBinding.achievementDescription.setText(achievement.getDescription());
 
+            if(achievement.isAchieved()){
+                view.setBackgroundColor("#ffff00".hashCode());
+            }else{
+                View v = itemBinding.getRoot();
+                view.setBackgroundColor("#000000".hashCode());
+            }
             return view;
         }
     };
