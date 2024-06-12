@@ -90,7 +90,7 @@ public class MiniGameEventGenerator implements IGameObject, ITouchable {
                 nextMiniGameType = MiniGameType.BATTLE;
             switch (nextMiniGameType) {
                 case BATTLE:
-                    Scene.push(new BattleScene());
+                    Scene.push(new BattleScene(random.nextInt(10) + 3));
                     return true;
                 case ASTEROID:
                     return true;
