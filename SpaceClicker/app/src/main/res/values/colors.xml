@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="battle_gauge1">#FFFF7000</color>
+    <color name="battle_gauge2">#FF0099FF</color>
 </resources>

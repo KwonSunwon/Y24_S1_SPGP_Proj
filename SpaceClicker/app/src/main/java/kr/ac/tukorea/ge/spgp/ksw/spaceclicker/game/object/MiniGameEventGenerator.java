@@ -9,9 +9,11 @@ import java.util.Random;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.ITouchable;
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
+import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.scene.BattleScene;
 
 public class MiniGameEventGenerator implements IGameObject, ITouchable {
     private Sprite eventButton = new Sprite(R.mipmap.plus_icon);
@@ -84,8 +86,11 @@ public class MiniGameEventGenerator implements IGameObject, ITouchable {
                 Log.d("MiniGameEventGenerator", "MiniGameType: " + nextMiniGameType.toString());
             x = -1;
             eventButton.setPosition(x, 0, 1, 1);
+            if(BuildConfig.DEBUG)
+                nextMiniGameType = MiniGameType.BATTLE;
             switch (nextMiniGameType) {
                 case BATTLE:
+                    Scene.push(new BattleScene());
                     return true;
                 case ASTEROID:
                     return true;

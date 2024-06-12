@@ -21,6 +21,17 @@ public class Player implements IGameObject, ITouchable {
 
     static private ArrayList<UpgradeInfo> upgradeInfo;
 
+    private int touchCount = 0;
+
+    private enum gameMode{
+        NORMAL,
+        BATTLE,
+        ASTEROID,
+        END
+    }
+
+    private gameMode mode = gameMode.NORMAL;
+
     private Player() {
         scrap = new Scrap();
         spaceShip = new SpaceShip();
@@ -53,7 +64,15 @@ public class Player implements IGameObject, ITouchable {
     @Override
     public boolean onTouch(MotionEvent event) {
         if(spaceShip.onTouch(event)) {
-            scrap.addScrapFromTouch();
+            switch (mode) {
+                case NORMAL:
+                    scrap.addScrapFromTouch();
+                    break;
+                case BATTLE:
+                    break;
+                case ASTEROID:
+                    break;
+            }
             return true;
         }
         return false;
