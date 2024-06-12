@@ -83,6 +83,10 @@ public class Scrap implements IGameObject {
         return true;
     }
 
+    public void addScrapTimeMultiply(long time) {
+        scrap += scrapPerSecond * time;
+    }
+
     public boolean useScrap(long scrap) {
         long modeScrap = scrap * SCRAP_MODIFIER;
         if (this.scrap < modeScrap) {

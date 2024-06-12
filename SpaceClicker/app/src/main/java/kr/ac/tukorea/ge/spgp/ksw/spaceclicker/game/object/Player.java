@@ -23,7 +23,7 @@ public class Player implements IGameObject, ITouchable {
 
     private int touchCount = 0;
 
-    private enum gameMode{
+    public enum gameMode{
         NORMAL,
         BATTLE,
         ASTEROID,
@@ -40,7 +40,7 @@ public class Player implements IGameObject, ITouchable {
         upgradeInfo.get(UPGRADE_TYPE.ANTENNA.ordinal());
     }
 
-    public static Player getInstance() {
+    static public Player getInstance() {
         if (instance == null) {
             instance = new Player();
         }
@@ -49,6 +49,14 @@ public class Player implements IGameObject, ITouchable {
 
     static public long getUpgradeLevel(UPGRADE_TYPE type){
         return upgradeInfo.get(type.ordinal()).getLevel();
+    }
+
+    static public void setMode(gameMode mode){
+        instance.mode = mode;
+    }
+
+    public void getMinigameReward(long time) {
+        scrap.addScrapTimeMultiply(time);
     }
 
     public void update(float elapsedSeconds) {
@@ -66,7 +74,8 @@ public class Player implements IGameObject, ITouchable {
         if(spaceShip.onTouch(event)) {
             switch (mode) {
                 case NORMAL:
-                    scrap.addScrapFromTouch();
+                    if(event.getAction() == MotionEvent.ACTION_DOWN)
+                        scrap.addScrapFromTouch();
                     break;
                 case BATTLE:
                     break;

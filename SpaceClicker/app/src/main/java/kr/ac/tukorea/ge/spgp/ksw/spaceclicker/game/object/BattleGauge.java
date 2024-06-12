@@ -1,6 +1,7 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 
 import android.graphics.Canvas;
+import android.util.Log;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.util.Gauge;
