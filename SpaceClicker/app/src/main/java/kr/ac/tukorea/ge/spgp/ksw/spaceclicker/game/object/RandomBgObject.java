@@ -19,6 +19,14 @@ public class RandomBgObject extends ScrollObject implements ITouchable {
     }
 
     @Override
+    public void update(float elapsedSeconds) {
+        super.update(elapsedSeconds);
+        if (y > 21) {
+            Scene.top().remove(MainScene.Layer.BACK_OBJECT, this);
+        }
+    }
+
+    @Override
     public boolean onTouch(MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN) {
             float[] pts = Metrics.fromScreen(event.getX(), event.getY());

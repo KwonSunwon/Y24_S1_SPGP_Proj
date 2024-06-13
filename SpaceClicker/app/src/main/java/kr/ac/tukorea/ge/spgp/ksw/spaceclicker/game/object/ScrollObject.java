@@ -15,9 +15,6 @@ public class ScrollObject extends Sprite implements IRecyclable {
     @Override
     public void update(float elapsedSeconds) {
         super.update(elapsedSeconds);
-        if (y > 21) {
-            Scene.top().remove(MainScene.Layer.BACK_OBJECT, this);
-        }
     }
 
     @Override
