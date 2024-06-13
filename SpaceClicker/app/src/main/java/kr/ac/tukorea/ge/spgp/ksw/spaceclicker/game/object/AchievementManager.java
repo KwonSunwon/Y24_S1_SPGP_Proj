@@ -71,6 +71,18 @@ public class AchievementManager implements IGameObject {
         }
     }
 
+    public void saveAchievedList() {
+        SharedPreferences achievedList = getContext().getSharedPreferences("AchievedList", 0);
+        SharedPreferences.Editor editor = achievedList.edit();
+
+        JSONArray jsonArray = new JSONArray();
+        for (Achievement achievement : achievements) {
+            jsonArray.put(achievement.isAchieved() ? 1 : 0);
+        }
+        editor.putString("AchievedList", jsonArray.toString());
+        editor.apply();
+    }
+
     public void checkAchievements() {
         for (Achievement achievement : achievements) {
             achievement.checkAchievement();

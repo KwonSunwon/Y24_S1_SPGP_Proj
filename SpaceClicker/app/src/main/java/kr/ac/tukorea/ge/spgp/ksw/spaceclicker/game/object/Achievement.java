@@ -1,10 +1,11 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 
 import android.content.Context;
+import android.widget.Toast;
 
 public class Achievement {
-    private String name;
-    private String description;
+    private final String name;
+    private final String description;
     private boolean isAchieved;
     Context context;
 
@@ -33,5 +34,18 @@ public class Achievement {
 
     public boolean checkAchievement() {
         return false;
+    }
+
+    public void checkAchievementUpgrade() {
+        if (isAchieved) {
+            return;
+        }
+        Player.getInstance();
+        if (Player.getUpgradeLevel(UpgradeInfo.UPGRADE_TYPE.ANTENNA) == 1) {
+            isAchieved = true;
+
+            Toast toast = Toast.makeText(context, "업적 달성: " + name, Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 }

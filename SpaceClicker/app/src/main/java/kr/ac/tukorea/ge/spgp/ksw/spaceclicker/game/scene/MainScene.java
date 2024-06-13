@@ -1,32 +1,16 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.scene;
 
-import android.app.AlarmManager;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.graphics.RectF;
 import android.util.Log;
-import android.view.MotionEvent;
 
-import java.util.Random;
-
-import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Button;
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.VertScrollBackground;
 import kr.ac.tukorea.ge.spgp.ksw.framework.res.Sound;
-import kr.ac.tukorea.ge.spgp.ksw.framework.scene.RecycleBin;
 import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
-import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.app.MainActivity;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.AchievementManager;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.BgObjectGenerator;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.MiniGameEventGenerator;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Player;
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.RandomBgObject;
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Scrap;
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.SpaceShip;
 
 public class MainScene extends Scene{
     private final MiniGameEventGenerator miniGameEventGenerator;
