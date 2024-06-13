@@ -15,7 +15,7 @@ import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.scene.MainScene;
 
 public class RandomBgObject extends ScrollObject implements ITouchable {
     public RandomBgObject() {
-        super(R.mipmap.crate1);
+        super(R.mipmap.crate1, 3);
     }
 
     @Override

@@ -1,16 +1,18 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 
+import android.graphics.RectF;
 import android.sax.StartElementListener;
 import android.util.Log;
 import android.view.MotionEvent;
 
+import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.ITouchable;
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 
-public class MovablePlayer extends Sprite implements ITouchable {
+public class MovablePlayer extends Sprite implements ITouchable, IBoxCollidable {
     private float smallTimer = 0;
     private float scale = 3.f;
 
@@ -68,5 +70,10 @@ public class MovablePlayer extends Sprite implements ITouchable {
                 return true;
         }
         return false;
+    }
+
+    @Override
+    public RectF getCollisionRect() {
+        return getDstRect();
     }
 }
