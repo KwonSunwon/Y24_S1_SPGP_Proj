@@ -3,9 +3,12 @@ package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 import static kr.ac.tukorea.ge.spgp.ksw.spaceclicker.app.MainActivity.getContext;
 
 import android.util.JsonReader;
+import android.util.JsonWriter;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class UpgradeInfo {
@@ -66,6 +69,34 @@ public class UpgradeInfo {
             e.printStackTrace();
         }
         return upgradeInfo;
+    }
+
+    public static void save(ArrayList<UpgradeInfo> upgradeInfos){
+        try{
+            OutputStream os = getContext().openFileOutput("upgradeInfo.json", 0);
+            JsonWriter jw = new JsonWriter(new OutputStreamWriter(os));
+            jw.beginArray();
+            for(UpgradeInfo upgradeInfo : upgradeInfos){
+                saveUpgradeInfo(jw, upgradeInfo);
+            }
+            jw.endArray();
+            jw.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private static void saveUpgradeInfo(JsonWriter jw, UpgradeInfo upgradeInfo){
+        try{
+            jw.beginObject();
+            jw.name("name").value(upgradeInfo.name);
+            jw.name("initCost").value(upgradeInfo.initCost);
+            jw.name("cost").value(upgradeInfo.cost);
+            jw.name("level").value(upgradeInfo.level);
+            jw.endObject();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public long getLevel(){

@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IBoxCollidable;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.ICircleCollidable;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
+import kr.ac.tukorea.ge.spgp.ksw.framework.res.Sound;
 import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
 import kr.ac.tukorea.ge.spgp.ksw.framework.util.CollisionHelper;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.MovablePlayer;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.scene.AsteroidScene;
 
@@ -31,6 +33,7 @@ public class CollisionManager implements IGameObject {
             IGameObject asteroid = asteroids.get(i);
             if(CollisionHelper.collides(player, (ICircleCollidable) asteroid)) {
                 player.hit();
+                Sound.playEffect(R.raw.shoot_destroy_1);
             }
         }
     }

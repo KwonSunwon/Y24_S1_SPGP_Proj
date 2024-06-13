@@ -3,6 +3,7 @@ package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.scene;
 import android.view.MotionEvent;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
+import kr.ac.tukorea.ge.spgp.ksw.framework.res.Sound;
 import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
@@ -80,6 +81,7 @@ public class BattleScene extends Scene {
     public boolean onTouch(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             touchCount += 1;
+            Sound.playEffect(R.raw.battle);
         }
         return true;
     }

@@ -1,5 +1,8 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 
+import static kr.ac.tukorea.ge.spgp.ksw.spaceclicker.app.MainActivity.getContext;
+
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
@@ -41,13 +44,35 @@ public class Scrap implements IGameObject {
 
         // Load scrap from save file
 
-        scrap = (long)9999999_99; // if value is 100 that means player has 1 scrap, so 123 equals 1.23 scrap
+        scrap = 9999999_99; // if value is 100 that means player has 1 scrap, so 123 equals 1.23 scrap
         scrapPerTouch = 1_00;
         scrapPerSecond = 0;
 
-        AntennaUpgradeLevel = 0;
-        RobotUpgradeLevel = 0;
-        RecycleUpgradeLevel = 0;
+        SharedPreferences scrapSave = getContext().getSharedPreferences("scrap", 0);
+        scrap = scrapSave.getLong("scrap", 0);
+
+        SharedPreferences scrapPerTouchSave = getContext().getSharedPreferences("scrapPerTouch", 0);
+        scrapPerTouch = scrapPerTouchSave.getLong("scrapPerTouch", 1_00);
+
+        SharedPreferences scrapPerSecondSave = getContext().getSharedPreferences("scrapPerSecond", 0);
+        scrapPerSecond = scrapPerSecondSave.getLong("scrapPerSecond", 0);
+    }
+
+    public void save() {
+        SharedPreferences scrapSave = getContext().getSharedPreferences("scrap", 0);
+        SharedPreferences.Editor editor = scrapSave.edit();
+        editor.putLong("scrap", scrap);
+        editor.apply();
+
+        SharedPreferences scrapPerTouchSave = getContext().getSharedPreferences("scrapPerTouch", 0);
+        editor = scrapPerTouchSave.edit();
+        editor.putLong("scrapPerTouch", scrapPerTouch);
+        editor.apply();
+
+        SharedPreferences scrapPerSecondSave = getContext().getSharedPreferences("scrapPerSecond", 0);
+        editor = scrapPerSecondSave.edit();
+        editor.putLong("scrapPerSecond", scrapPerSecond);
+        editor.apply();
     }
 
     @Override

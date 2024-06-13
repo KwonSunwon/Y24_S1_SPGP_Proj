@@ -13,6 +13,7 @@ import java.util.Random;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Button;
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.VertScrollBackground;
+import kr.ac.tukorea.ge.spgp.ksw.framework.res.Sound;
 import kr.ac.tukorea.ge.spgp.ksw.framework.scene.RecycleBin;
 import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
@@ -59,5 +60,20 @@ public class MainScene extends Scene{
 
         AchievementManager achievementManager = AchievementManager.getInstance();
         add(Layer.CONTROL, achievementManager);
+
+        Sound.playMusic(R.raw.bg);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Player.getInstance().save();
+        Sound.pauseMusic();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Sound.resumeMusic();
     }
 }

@@ -1,6 +1,7 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 
 import android.graphics.Canvas;
+import android.media.SoundPool;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import java.util.Vector;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.ITouchable;
 
+import kr.ac.tukorea.ge.spgp.ksw.framework.res.Sound;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.UpgradeInfo.UPGRADE_TYPE;
 
 public class Player implements IGameObject, ITouchable {
@@ -40,6 +43,11 @@ public class Player implements IGameObject, ITouchable {
 
         upgradeInfo = UpgradeInfo.load();
         upgradeInfo.get(UPGRADE_TYPE.ANTENNA.ordinal());
+    }
+
+    public void save(){
+        scrap.save();
+        spaceShip.save();
     }
 
     static public Player getInstance() {
@@ -84,8 +92,10 @@ public class Player implements IGameObject, ITouchable {
         if(spaceShip.onTouch(event)) {
             switch (mode) {
                 case NORMAL:
-                    if(event.getAction() == MotionEvent.ACTION_DOWN)
+                    if(event.getAction() == MotionEvent.ACTION_DOWN) {
                         scrap.addScrapFromTouch();
+                        Sound.playEffect(R.raw.gold3);
+                    }
                     break;
                 case BATTLE:
                     break;
@@ -102,6 +112,9 @@ public class Player implements IGameObject, ITouchable {
         if (!scrap.useScrap(info.getCost()))
             return;
         info.upgrade();
+
+        Sound.playEffect(R.raw.power_up);
+        UpgradeInfo.save(upgradeInfo);
     }
 
     static public void setLeftEventTime(long time){

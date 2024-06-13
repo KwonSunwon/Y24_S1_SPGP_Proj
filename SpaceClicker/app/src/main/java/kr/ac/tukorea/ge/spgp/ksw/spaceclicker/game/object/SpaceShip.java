@@ -1,5 +1,8 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 
+import static kr.ac.tukorea.ge.spgp.ksw.spaceclicker.app.MainActivity.getContext;
+
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
@@ -31,9 +34,12 @@ public class SpaceShip extends Sprite{
         // Load speed and distance from save file
         speed = 1;
         distance = 0;
-        crewUpgradeLevel = 0;
-        engineUpgradeLevel = 0;
-        designUpgradeLevel = 0;
+
+        SharedPreferences speedSave = getContext().getSharedPreferences("speed", 0);
+        speed = speedSave.getLong("speed", 1);
+
+        SharedPreferences distanceSave = getContext().getSharedPreferences("distance", 0);
+        distance = distanceSave.getLong("distance", 0);
 
         speedDisplay = new ImageNumber(8f, 1.5f, 0.3f);
         distanceDisplay = new ImageNumber(7.8f, 2.f, 0.5f);
@@ -43,6 +49,18 @@ public class SpaceShip extends Sprite{
 
         distanceIcon = new Sprite(R.mipmap.km);
         distanceIcon.setPosition(8.5f, 2.35f, 1.f, 0.4f);
+    }
+
+    public void save() {
+        SharedPreferences speedSave = getContext().getSharedPreferences("speed", 0);
+        SharedPreferences.Editor speedEditor = speedSave.edit();
+        speedEditor.putLong("speed", speed);
+        speedEditor.apply();
+
+        SharedPreferences distanceSave = getContext().getSharedPreferences("distance", 0);
+        SharedPreferences.Editor distanceEditor = distanceSave.edit();
+        distanceEditor.putLong("distance", distance);
+        distanceEditor.apply();
     }
 
     @Override
