@@ -13,6 +13,7 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.scene.Scene;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.scene.AsteroidScene;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.scene.BattleScene;
 
 public class MiniGameEventGenerator implements IGameObject, ITouchable {
@@ -87,13 +88,15 @@ public class MiniGameEventGenerator implements IGameObject, ITouchable {
             x = -1;
             eventButton.setPosition(x, 0, 1, 1);
             if(BuildConfig.DEBUG)
-                nextMiniGameType = MiniGameType.BATTLE;
+                nextMiniGameType = MiniGameType.ASTEROID;
             switch (nextMiniGameType) {
                 case BATTLE:
-                    Player.setMode(Player.gameMode.BATTLE);
+                    Player.getInstance().setMode(Player.gameMode.BATTLE);
                     Scene.push(new BattleScene(random.nextInt(7) + 3));
                     return true;
                 case ASTEROID:
+                    Player.getInstance().setMode(Player.gameMode.ASTEROID);
+                    Scene.push(new AsteroidScene());
                     return true;
             }
             return true;

@@ -22,9 +22,6 @@ public class BattleScene extends Scene {
     private boolean isWin;
 
     public enum Layer {
-        CONTROL,
-        BACKGROUND,
-        BACK_OBJECT,
         OBJECT,
         UI,
         END
@@ -89,7 +86,7 @@ public class BattleScene extends Scene {
 
     @Override
     public void onEnd(){
-        Player.setMode(Player.gameMode.NORMAL);
+        Player.getInstance().setMode(Player.gameMode.NORMAL);
         if(isWin)
             Player.getInstance().getMinigameReward(600);
     }

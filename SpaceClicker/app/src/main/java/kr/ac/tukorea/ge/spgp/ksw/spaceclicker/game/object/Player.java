@@ -51,8 +51,8 @@ public class Player implements IGameObject, ITouchable {
         return upgradeInfo.get(type.ordinal()).getLevel();
     }
 
-    static public void setMode(gameMode mode){
-        instance.mode = mode;
+    public void setMode(gameMode mode){
+        this.mode = mode;
     }
 
     public void getMinigameReward(long time) {
@@ -60,13 +60,17 @@ public class Player implements IGameObject, ITouchable {
     }
 
     public void update(float elapsedSeconds) {
-        scrap.update(elapsedSeconds);
-        spaceShip.update(elapsedSeconds);
+        if(mode == gameMode.NORMAL) {
+            scrap.update(elapsedSeconds);
+            spaceShip.update(elapsedSeconds);
+        }
     }
 
     public void draw(Canvas canvas) {
-        scrap.draw(canvas);
-        spaceShip.draw(canvas);
+        if(mode == gameMode.NORMAL) {
+            scrap.draw(canvas);
+            spaceShip.draw(canvas);
+        }
     }
 
     @Override
