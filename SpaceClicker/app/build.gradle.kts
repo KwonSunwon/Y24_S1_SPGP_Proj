@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "kr.ac.tukorea.ge.spgp.ksw.spaceclicker"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"

@@ -36,13 +36,10 @@ public class MiniGameEventGenerator implements IGameObject, ITouchable {
         x = -1;
         eventButton.setPosition(x, 0, 1, 1);
 
-        interval = random.nextInt(120) + 120;
+        interval = 1;
         time = 0;
         int type = random.nextInt(2);
         nextMiniGameType = MiniGameType.values()[type];
-
-        if(BuildConfig.DEBUG)
-            interval = 1;
     }
 
     private boolean buttonMovement() {
@@ -60,11 +57,12 @@ public class MiniGameEventGenerator implements IGameObject, ITouchable {
     @Override
     public void update(float elapsedSeconds) {
         time += elapsedSeconds;
+        Player.setLeftEventTime((long)(interval - time) * 1000);
         if (time > interval) {
             // Mini Game Icon Move
             if(buttonMovement()) {
 //                interval = random.nextInt(120) + 120;
-                interval = 10;
+                interval = 20;
                 time = 0;
                 int type = random.nextInt(2);
                 nextMiniGameType = MiniGameType.values()[type];
@@ -78,17 +76,15 @@ public class MiniGameEventGenerator implements IGameObject, ITouchable {
     }
 
     @Override
-    public boolean onTouch(MotionEvent event){
-        if(event.getAction() != MotionEvent.ACTION_DOWN) return false;
+    public boolean onTouch(MotionEvent event) {
+        if (event.getAction() != MotionEvent.ACTION_DOWN) return false;
         float[] pts = Metrics.fromScreen(event.getX(), event.getY());
         if (eventButton.getDstRect().contains(pts[0], pts[1])) {
             // Mini Game Scene Push
-            if(BuildConfig.DEBUG)
+            if (BuildConfig.DEBUG)
                 Log.d("MiniGameEventGenerator", "MiniGameType: " + nextMiniGameType.toString());
             x = -1;
             eventButton.setPosition(x, 0, 1, 1);
-            if(BuildConfig.DEBUG)
-                nextMiniGameType = MiniGameType.ASTEROID;
             switch (nextMiniGameType) {
                 case BATTLE:
                     Player.getInstance().setMode(Player.gameMode.BATTLE);

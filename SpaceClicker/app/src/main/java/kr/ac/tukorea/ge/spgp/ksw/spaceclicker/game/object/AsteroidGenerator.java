@@ -18,7 +18,7 @@ public class AsteroidGenerator implements IGameObject {
     private final Random random = new Random();
 
     public AsteroidGenerator() {
-        interval = MiN_INTERVAL;
+        interval = 2;
     }
 
     @Override

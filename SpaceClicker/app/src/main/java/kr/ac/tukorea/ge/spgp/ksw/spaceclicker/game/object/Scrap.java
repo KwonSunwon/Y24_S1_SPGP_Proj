@@ -1,7 +1,6 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 
 import android.graphics.Canvas;
-import android.util.Log;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
@@ -31,8 +30,8 @@ public class Scrap implements IGameObject {
     private float scrapAdder = 0;
 
     public Scrap() {
-        scrapDisplay = new ImageNumber(R.mipmap.font1, 8.f, 0.5f, 0.3f);
-        scrapPerSecondDisplay = new ImageNumber(R.mipmap.font1, 8.f, 1.0f, 0.3f);
+        scrapDisplay = new ImageNumber(8.f, 0.5f, 0.3f);
+        scrapPerSecondDisplay = new ImageNumber(8.f, 1.0f, 0.3f);
 
         scrapIcon = new Sprite(R.mipmap.scrap_icon);
         scrapIcon.setPosition(8.5f, 0.7f, 0.6f, 0.5f);
@@ -84,6 +83,7 @@ public class Scrap implements IGameObject {
     }
 
     public void addScrapTimeMultiply(long time) {
+        if(scrapPerSecond == 0) scrap += 100;
         scrap += scrapPerSecond * time;
     }
     public void addScrapTouchMultiply(long touch) {

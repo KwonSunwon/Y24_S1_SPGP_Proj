@@ -23,12 +23,14 @@ public class CollisionManager implements IGameObject {
     @Override
     public void update(float elapsedSeconds) {
         MovablePlayer player = (MovablePlayer) scene.objectsAt(AsteroidScene.Layer.OBJECT).get(0);
+        if(player.isInjured())
+            return;
+
         ArrayList<IGameObject> asteroids = scene.objectsAt(AsteroidScene.Layer.BACK_OBJECT);
         for (int i = asteroids.size() - 1; i >= 0; i--) {
             IGameObject asteroid = asteroids.get(i);
             if(CollisionHelper.collides(player, (ICircleCollidable) asteroid)) {
-                scene.remove(AsteroidScene.Layer.BACK_OBJECT, asteroid);
-                Log.d("Collision", "Collision !!");
+                player.hit();
             }
         }
     }

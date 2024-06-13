@@ -16,6 +16,8 @@ import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.UpgradeInfo.UPGRADE_TY
 public class Player implements IGameObject, ITouchable {
     private static Player instance = null;
 
+    public static long leftEventTime;
+
     private Scrap scrap;
     private SpaceShip spaceShip;
 
@@ -100,5 +102,9 @@ public class Player implements IGameObject, ITouchable {
         if (!scrap.useScrap(info.getCost()))
             return;
         info.upgrade();
+    }
+
+    static public void setLeftEventTime(long time){
+        leftEventTime = time;
     }
 }

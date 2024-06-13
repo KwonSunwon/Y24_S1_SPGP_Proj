@@ -1,25 +1,27 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.RectF;
-import android.sax.StartElementListener;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IBoxCollidable;
-import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.ITouchable;
 import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 
 public class MovablePlayer extends Sprite implements ITouchable, IBoxCollidable {
-    private float smallTimer = 0;
+    public float introTimer = 0;
     private float scale = 3.f;
 
     private float targetX, targetY;
 
-    static final private float MAX_SPEED = 10.f;
     private boolean isTouched;
+
+    public int hp = 3;
+    private float injuredTime = 0;
+    private Paint paint = new Paint();
 
     public MovablePlayer() {
         super(R.mipmap.spaceship);
@@ -29,19 +31,32 @@ public class MovablePlayer extends Sprite implements ITouchable, IBoxCollidable 
 
     @Override
     public void update(float elapsedSeconds) {
-        if (smallTimer < 2) {
-            smallTimer += elapsedSeconds;
-            if (smallTimer > 2){
-                smallTimer = 2;
+        if (introTimer < 2) {
+            introTimer += elapsedSeconds;
+            if (introTimer > 2){
+                introTimer = 2;
                 targetX = x;
                 targetY = y;
             }
-            scale = 3.f - smallTimer;
-            setPosition(4.5f, 8.f + smallTimer, scale, scale);
+            scale = 3.f - introTimer;
+            setPosition(4.5f, 8.f + introTimer, scale, scale);
             return;
         }
-
         setPosition(targetX, targetY, scale, scale);
+        if(injuredTime > 0){
+            injuredTime -= elapsedSeconds;
+        }
+    }
+
+    @Override
+    public void draw(Canvas canvas){
+        if(injuredTime > 0){
+            // blink player
+            paint.setAlpha((int)(255 * Math.sin(injuredTime * 40)));
+        }
+        else
+            paint.setAlpha(255);
+        canvas.drawBitmap(bitmap, null, dstRect, paint);
     }
 
     @Override
@@ -75,5 +90,14 @@ public class MovablePlayer extends Sprite implements ITouchable, IBoxCollidable 
     @Override
     public RectF getCollisionRect() {
         return getDstRect();
+    }
+
+    public boolean isInjured(){
+        return injuredTime > 0;
+    }
+
+    public void hit() {
+        hp--;
+        injuredTime = 0.5f;
     }
 }

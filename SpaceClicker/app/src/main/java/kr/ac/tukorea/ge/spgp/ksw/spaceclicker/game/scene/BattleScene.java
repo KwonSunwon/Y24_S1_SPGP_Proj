@@ -88,6 +88,6 @@ public class BattleScene extends Scene {
     public void onEnd(){
         Player.getInstance().setMode(Player.gameMode.NORMAL);
         if(isWin)
-            Player.getInstance().getMinigameReward(600);
+            Player.getInstance().getMinigameReward(6000);
     }
 }

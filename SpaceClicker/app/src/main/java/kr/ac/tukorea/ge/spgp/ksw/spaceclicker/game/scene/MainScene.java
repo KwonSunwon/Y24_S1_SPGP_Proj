@@ -1,5 +1,10 @@
 package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.scene;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.graphics.RectF;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -23,6 +28,7 @@ import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.Scrap;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object.SpaceShip;
 
 public class MainScene extends Scene{
+    private final MiniGameEventGenerator miniGameEventGenerator;
     private Player player = Player.getInstance();
 
     public enum Layer {
@@ -48,15 +54,10 @@ public class MainScene extends Scene{
         BgObjectGenerator bgObjectGenerator = new BgObjectGenerator();
         add(Layer.BACK_OBJECT, bgObjectGenerator);
 
-        MiniGameEventGenerator miniGameEventGenerator = new MiniGameEventGenerator();
+        miniGameEventGenerator = new MiniGameEventGenerator();
         add(Layer.UI, miniGameEventGenerator);
 
         AchievementManager achievementManager = AchievementManager.getInstance();
         add(Layer.CONTROL, achievementManager);
-    }
-
-    @Override
-    protected void onPause() {
-
     }
 }

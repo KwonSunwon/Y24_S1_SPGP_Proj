@@ -2,13 +2,12 @@ package kr.ac.tukorea.ge.spgp.ksw.spaceclicker.game.object;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 
 import kr.ac.tukorea.ge.spgp.ksw.framework.interfaces.IGameObject;
 import kr.ac.tukorea.ge.spgp.ksw.framework.res.BitmapPool;
-import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.BuildConfig;
+import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 
 public class ImageNumber implements IGameObject {
     private final Bitmap bitmap;
@@ -20,8 +19,8 @@ public class ImageNumber implements IGameObject {
     private final int srcOffset;
     private long number, displayNumber;
 
-    public ImageNumber(int mipmapId, float right, float top, float width) {
-        this.bitmap = BitmapPool.get(mipmapId);
+    public ImageNumber(float right, float top, float width) {
+        this.bitmap = BitmapPool.get(R.mipmap.font1);
         this.right = right;
         this.top = top;
         this.dstCharWidth = width;
@@ -38,6 +37,10 @@ public class ImageNumber implements IGameObject {
 
     public void setNumber(long number) {
         this.number = this.displayNumber = number;
+    }
+
+    public void addNumber(long number) {
+        this.number += number;
     }
 
     @Override
