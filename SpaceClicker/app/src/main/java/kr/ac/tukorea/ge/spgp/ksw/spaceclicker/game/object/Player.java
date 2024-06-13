@@ -59,6 +59,10 @@ public class Player implements IGameObject, ITouchable {
         scrap.addScrapTimeMultiply(time);
     }
 
+    public void getBoxReward(long time) {
+        scrap.addScrapTouchMultiply(time);
+    }
+
     public void update(float elapsedSeconds) {
         if(mode == gameMode.NORMAL) {
             scrap.update(elapsedSeconds);

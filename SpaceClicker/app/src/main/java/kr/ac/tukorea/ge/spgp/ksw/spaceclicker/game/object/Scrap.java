@@ -43,7 +43,7 @@ public class Scrap implements IGameObject {
         // Load scrap from save file
 
         scrap = (long)9999999_99; // if value is 100 that means player has 1 scrap, so 123 equals 1.23 scrap
-        scrapPerTouch = 100;
+        scrapPerTouch = 1_00;
         scrapPerSecond = 0;
 
         AntennaUpgradeLevel = 0;
@@ -85,6 +85,9 @@ public class Scrap implements IGameObject {
 
     public void addScrapTimeMultiply(long time) {
         scrap += scrapPerSecond * time;
+    }
+    public void addScrapTouchMultiply(long touch) {
+        scrap += scrapPerTouch * touch;
     }
 
     public boolean useScrap(long scrap) {

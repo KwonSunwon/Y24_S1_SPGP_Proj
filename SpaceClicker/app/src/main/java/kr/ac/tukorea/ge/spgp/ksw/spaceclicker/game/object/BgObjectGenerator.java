@@ -16,7 +16,7 @@ public class BgObjectGenerator implements IGameObject{
     private final Random random = new Random();
 
     public BgObjectGenerator() {
-        interval = random.nextFloat() * 2 + 1;
+        interval = random.nextFloat() * 2 + 3;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class BgObjectGenerator implements IGameObject{
         time += elapsedSeconds;
         if (time > interval) {
             time = 0;
-            interval = random.nextFloat() * 2 + 1;
+            interval = random.nextFloat() * 2 + 3;
             RandomBgObject bgObject = (RandomBgObject) RecycleBin.get(RandomBgObject.class);
             if(bgObject == null) {
                 bgObject = new RandomBgObject();

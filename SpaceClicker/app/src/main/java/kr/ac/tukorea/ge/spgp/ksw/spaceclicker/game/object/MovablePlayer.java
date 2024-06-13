@@ -10,7 +10,7 @@ import kr.ac.tukorea.ge.spgp.ksw.framework.objects.Sprite;
 import kr.ac.tukorea.ge.spgp.ksw.framework.view.Metrics;
 import kr.ac.tukorea.ge.spgp.ksw.spaceclicker.R;
 
-public class MovablePlayer extends Sprite implements IGameObject, ITouchable {
+public class MovablePlayer extends Sprite implements ITouchable {
     private float smallTimer = 0;
     private float scale = 3.f;
 
@@ -52,15 +52,17 @@ public class MovablePlayer extends Sprite implements IGameObject, ITouchable {
                     isTouched = true;
                     targetX = pts[0];
                     targetY = pts[1];
+                    return true;
                 }
-                return true;
+                break;
             case MotionEvent.ACTION_MOVE:
                 if(isTouched){
                     pts = Metrics.fromScreen(event.getX(), event.getY());
                     targetX = pts[0];
                     targetY = pts[1];
+                    return true;
                 }
-                return true;
+                break;
             case MotionEvent.ACTION_UP:
                 isTouched = false;
                 return true;
